@@ -1,0 +1,134 @@
+==================
+Valid array
+==================
+
+[]
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (array))))))
+
+==================
+Valid array
+==================
+
+[abc]
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (array
+            (expression
+              (nular_expression
+                (variable)))))))))
+
+==================
+Valid array
+==================
+
+[abc,abc,abc]
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (array
+            (expression
+              (nular_expression
+                (variable)))
+            (expression
+              (nular_expression
+                (variable)))
+            (expression
+              (nular_expression
+                (variable)))))))))
+
+==================
+Valid array
+==================
+
+[abc, abc, abc]
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (array
+            (expression
+              (nular_expression
+                (variable)))
+            (expression
+              (nular_expression
+                (variable)))
+            (expression
+              (nular_expression
+                (variable)))))))))
+
+==================
+Invalid array
+:error
+==================
+
+[abc
+
+------------------
+
+==================
+Invalid array
+:error
+==================
+
+abc]
+
+------------------
+
+==================
+Invalid array
+:error
+==================
+
+[,]
+
+------------------
+
+==================
+Invalid array
+:error
+==================
+
+[,abc]
+
+------------------
+
+==================
+Invalid array
+:error
+==================
+
+[abc,]
+
+------------------
+
+==================
+Invalid array
+:error
+==================
+
+[abc, xyz = abc, abc]
+
+------------------

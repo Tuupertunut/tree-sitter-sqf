@@ -1,0 +1,92 @@
+==================
+Valid parentheses
+==================
+
+(abc)
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (parentheses_expression
+            (expression
+              (nular_expression
+                (variable)))))))))
+
+==================
+Valid parentheses
+==================
+
+(count abc)
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (parentheses_expression
+            (expression
+              (unary_expression
+                (unary_command)
+                (expression
+                  (nular_expression
+                    (variable)))))))))))
+
+==================
+Invalid parentheses
+:error
+==================
+
+(abc
+
+------------------
+
+==================
+Invalid parentheses
+:error
+==================
+
+abc)
+
+------------------
+
+==================
+Invalid parentheses
+:error
+==================
+
+()
+
+------------------
+
+==================
+Invalid parentheses
+:error
+==================
+
+(abc,abc)
+
+------------------
+
+==================
+Invalid parentheses
+:error
+==================
+
+(abc;abc)
+
+------------------
+
+==================
+Invalid parentheses
+:error
+==================
+
+(xyz = abc)
+
+------------------

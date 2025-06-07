@@ -1,0 +1,247 @@
+==================
+Command name splitting
+==================
+
+loc setPosition pos
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_4)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Command name splitting
+==================
+
+loc set position pos
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_4)
+          (expression
+            (unary_expression
+              (unary_command)
+              (expression
+                (nular_expression
+                  (variable))))))))))
+
+==================
+Command argument joining
+==================
+
+array select(index)
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_4)
+          (expression
+            (nular_expression
+              (parentheses_expression
+                (expression
+                  (nular_expression
+                    (variable)))))))))))
+
+==================
+Command argument joining
+:error
+==================
+
+array selectindex
+
+------------------
+
+==================
+Command argument joining
+==================
+
+[arg]call func
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (array
+                (expression
+                  (nular_expression
+                    (variable))))))
+          (binary_command_4)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Command argument joining
+:error
+==================
+
+argscall func
+
+------------------
+
+==================
+Command argument joining
+==================
+
+[arg]call{code}
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (array
+                (expression
+                  (nular_expression
+                    (variable))))))
+          (binary_command_4)
+          (expression
+            (nular_expression
+              (code_block
+                (code
+                  (statement
+                    (expression
+                      (nular_expression
+                        (variable)))))))))))))
+
+==================
+Command argument joining
+==================
+
+argscallfunc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (variable))))))
+
+==================
+Command argument joining
+==================
+
+args
+call
+func
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_4)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Command argument joining
+==================
+
+count"abc"
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (unary_command)
+          (expression
+            (nular_expression
+              (string))))))))
+
+==================
+Command argument joining
+==================
+
+countabc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (variable))))))
+
+==================
+Command argument joining
+==================
+
+count abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (unary_command)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Command argument joining
+==================
+
+count
+abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (unary_command)
+          (expression
+            (nular_expression
+              (variable))))))))

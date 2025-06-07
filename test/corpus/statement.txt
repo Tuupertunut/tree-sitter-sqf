@@ -1,0 +1,291 @@
+==================
+Variable assignment
+==================
+
+xyz = abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (assignment
+        (variable)
+        (expression
+          (nular_expression
+            (variable)))))))
+
+==================
+Variable assignment
+==================
+
+private _xyz = abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (assignment
+        (variable)
+        (expression
+          (nular_expression
+            (variable)))))))
+
+==================
+Invalid variable assignment
+:error
+==================
+
+qwerty _xyz = abc
+
+------------------
+
+==================
+Variable
+==================
+
+_xyz
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (variable))))))
+
+==================
+Nular command
+==================
+
+isServer
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (nular_command))))))
+
+==================
+Unary command
+==================
+
+setViewDistance abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (unary_command)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Invalid unary command
+:error
+==================
+
+nonexistent abc
+
+------------------
+
+==================
+Binary command
+==================
+
+xyz addWeaponCargo abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_4)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Invalid binary command
+:error
+==================
+
+xyz nonexistent abc
+
+------------------
+
+==================
+Binary command precedence
+==================
+
+1 + 2 * 3
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (number)))
+          (binary_command_6)
+          (expression
+            (binary_expression
+              (expression
+                (nular_expression
+                  (number)))
+              (binary_command_7)
+              (expression
+                (nular_expression
+                  (number))))))))))
+
+==================
+Binary command precedence
+==================
+
+1 * 2 + 3
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (binary_expression
+              (expression
+                (nular_expression
+                  (number)))
+              (binary_command_7)
+              (expression
+                (nular_expression
+                  (number)))))
+          (binary_command_6)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Binary and unary command precedence
+==================
+
+array select count another
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_4)
+          (expression
+            (unary_expression
+              (unary_command)
+              (expression
+                (nular_expression
+                  (variable))))))))))
+
+==================
+Binary and unary command ambiguity
+==================
+
+array select call func
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_4)
+          (expression
+            (unary_expression
+              (unary_command)
+              (expression
+                (nular_expression
+                  (variable))))))))))
+
+==================
+Binary and unary command ambiguity
+==================
+
+isPlayer call func
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (unary_command)
+          (expression
+            (unary_expression
+              (unary_command)
+              (expression
+                (nular_expression
+                  (variable))))))))))
+
+==================
+Binary and unary command ambiguity
+==================
+
+args call func
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_4)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Private command
+==================
+
+private abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (unary_command)
+          (expression
+            (nular_expression
+              (variable))))))))

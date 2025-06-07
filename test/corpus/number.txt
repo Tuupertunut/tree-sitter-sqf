@@ -1,0 +1,701 @@
+==================
+Valid number
+==================
+
+2
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+2.
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+2.5
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+.5
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+02
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+02.
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+.50
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+2e3
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+2e+3
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+2e-3
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+2.e-3
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+2.5e-3
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+.5e-3
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+2e003
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+2e+003
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+2E3
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+2E+3
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+0x2
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+0xe
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+0xC
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+0x0cB2
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+0x2e3
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid number
+==================
+
+$0cB2
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Invalid number
+==================
+
+-2
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (unary_command)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Invalid number
+==================
+
++2
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (unary_command)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Invalid number
+==================
+
+2+3
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (number)))
+          (binary_command_6)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Invalid number
+==================
+
+2-3
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (number)))
+          (binary_command_6)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Invalid number
+:error
+==================
+
+.
+
+------------------
+
+==================
+Invalid number
+:error
+==================
+
+.2.
+
+------------------
+
+==================
+Invalid number
+:error
+==================
+
+2e
+
+------------------
+
+==================
+Invalid number
+==================
+
+e3
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (variable))))))
+
+==================
+Invalid number
+:error
+==================
+
+.e3
+
+------------------
+
+==================
+Invalid number
+:error
+==================
+
+2e3.
+
+------------------
+
+==================
+Invalid number
+:error
+==================
+
+2e3.5
+
+------------------
+
+==================
+Invalid number
+:error
+==================
+
+2e.5
+
+------------------
+
+==================
+Invalid number
+:error
+==================
+
+2e3e5
+
+------------------
+
+==================
+Invalid number
+:error
+==================
+
+2.5.3
+
+------------------
+
+==================
+Invalid number
+:error
+==================
+
+2..5
+
+------------------
+
+==================
+Invalid number
+:error
+==================
+
+2ee3
+
+------------------
+
+==================
+Invalid number
+==================
+
+2e3+5
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (number)))
+          (binary_command_6)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Invalid number
+==================
+
+-0x2
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (unary_command)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Invalid number
+==================
+
++0x2
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (unary_command)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Invalid number
+==================
+
+x2
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (variable))))))
+
+==================
+Invalid number
+:error
+==================
+
+0x
+
+------------------
+
+==================
+Invalid number
+:error
+==================
+
+4x2
+
+------------------
+
+==================
+Invalid number
+:error
+==================
+
+0x-2
+
+------------------
+
+==================
+Invalid number
+:error
+==================
+
+0x2.5
+
+------------------
+
+==================
+Invalid number
+==================
+
+0x2e+3
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (number)))
+          (binary_command_6)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Invalid number
+:error
+==================
+
+0xg
+
+------------------
+
+==================
+Invalid number
+:error
+==================
+
+$
+
+------------------
+
+==================
+Invalid number
+:error
+==================
+
+$2.5
+
+------------------
+
+==================
+Invalid number
+:error
+==================
+
+$g
+
+------------------

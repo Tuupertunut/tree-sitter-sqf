@@ -1,0 +1,213 @@
+==================
+Valid code block
+==================
+
+{}
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (code_block))))))
+
+==================
+Valid code block
+==================
+
+{;}
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (code_block))))))
+
+==================
+Valid code block
+==================
+
+{abc}
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (code_block
+            (code
+              (statement
+                (expression
+                  (nular_expression
+                    (variable)))))))))))
+
+==================
+Valid code block
+==================
+
+{abc;}
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (code_block
+            (code
+              (statement
+                (expression
+                  (nular_expression
+                    (variable)))))))))))
+
+==================
+Valid code block
+==================
+
+{;abc}
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (code_block
+            (code
+              (statement
+                (expression
+                  (nular_expression
+                    (variable)))))))))))
+
+==================
+Valid code block
+==================
+
+{;;;abc;;;}
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (code_block
+            (code
+              (statement
+                (expression
+                  (nular_expression
+                    (variable)))))))))))
+
+==================
+Valid code block
+==================
+
+{abc;abc;abc}
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (code_block
+            (code
+              (statement
+                (expression
+                  (nular_expression
+                    (variable))))
+              (statement
+                (expression
+                  (nular_expression
+                    (variable))))
+              (statement
+                (expression
+                  (nular_expression
+                    (variable)))))))))))
+
+==================
+Valid code block
+==================
+
+{abc; abc; abc}
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (code_block
+            (code
+              (statement
+                (expression
+                  (nular_expression
+                    (variable))))
+              (statement
+                (expression
+                  (nular_expression
+                    (variable))))
+              (statement
+                (expression
+                  (nular_expression
+                    (variable)))))))))))
+
+==================
+Valid code block
+==================
+
+{abc; xyz = abc; abc}
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (code_block
+            (code
+              (statement
+                (expression
+                  (nular_expression
+                    (variable))))
+              (statement
+                (assignment
+                  (variable)
+                  (expression
+                    (nular_expression
+                      (variable)))))
+              (statement
+                (expression
+                  (nular_expression
+                    (variable)))))))))))
+
+==================
+Invalid code block
+:error
+==================
+
+{abc
+
+------------------
+
+==================
+Invalid code block
+:error
+==================
+
+abc}
+
+------------------

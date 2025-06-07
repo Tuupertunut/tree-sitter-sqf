@@ -1,0 +1,206 @@
+==================
+Valid string
+==================
+
+"abc"
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string))))))
+
+==================
+Valid string
+==================
+
+"ab""c"
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string))))))
+
+==================
+Valid string
+==================
+
+"ab""""c"
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string))))))
+
+==================
+Valid string
+==================
+
+"ab'c"
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string))))))
+
+==================
+Valid string
+==================
+
+'abc'
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string))))))
+
+==================
+Valid string
+==================
+
+'ab''c'
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string))))))
+
+==================
+Valid string
+==================
+
+'ab''''c'
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string))))))
+
+==================
+Valid string
+==================
+
+'ab"c'
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string))))))
+
+==================
+Invalid string
+==================
+
+abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (variable))))))
+
+==================
+Invalid string
+:error
+==================
+
+"abc
+
+------------------
+
+==================
+Invalid string
+:error
+==================
+
+abc"
+
+------------------
+
+==================
+Invalid string
+:error
+==================
+
+"ab"c"
+
+------------------
+
+==================
+Invalid string
+:error
+==================
+
+"ab"""c"
+
+------------------
+
+==================
+Invalid string
+:error
+==================
+
+'abc
+
+------------------
+
+==================
+Invalid string
+:error
+==================
+
+abc'
+
+------------------
+
+==================
+Invalid string
+:error
+==================
+
+'ab'c'
+
+------------------
+
+==================
+Invalid string
+:error
+==================
+
+'ab'''c'
+
+------------------
