@@ -23,6 +23,10 @@
       "required": true,
       "types": [
         {
+          "type": "assignment_modifier",
+          "named": true
+        },
+        {
           "type": "expression",
           "named": true
         },
@@ -32,6 +36,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "assignment_modifier",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "binary_expression",
@@ -227,6 +236,11 @@
     }
   },
   {
+    "type": "unary_command",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "unary_expression",
     "named": true,
     "fields": {},
@@ -319,10 +333,6 @@
   },
   {
     "type": "string",
-    "named": true
-  },
-  {
-    "type": "unary_command",
     "named": true
   },
   {

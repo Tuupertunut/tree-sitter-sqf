@@ -27,6 +27,7 @@ private _xyz = abc
   (code
     (statement
       (assignment
+        (assignment_modifier)
         (variable)
         (expression
           (nular_expression
