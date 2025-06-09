@@ -14,7 +14,7 @@ loc setPosition pos
           (expression
             (nular_expression
               (variable)))
-          (binary_command_4)
+          (alphanumeric_binary_command_4)
           (expression
             (nular_expression
               (variable))))))))
@@ -35,10 +35,10 @@ loc set position pos
           (expression
             (nular_expression
               (variable)))
-          (binary_command_4)
+          (alphanumeric_binary_command_4)
           (expression
             (unary_expression
-              (unary_command)
+              (alphanumeric_unary_command)
               (expression
                 (nular_expression
                   (variable))))))))))
@@ -59,7 +59,7 @@ array select(index)
           (expression
             (nular_expression
               (variable)))
-          (binary_command_4)
+          (alphanumeric_binary_command_4)
           (expression
             (nular_expression
               (parentheses_expression
@@ -95,7 +95,7 @@ Command argument joining
                 (expression
                   (nular_expression
                     (variable))))))
-          (binary_command_4)
+          (alphanumeric_binary_command_4)
           (expression
             (nular_expression
               (variable))))))))
@@ -128,7 +128,7 @@ Command argument joining
                 (expression
                   (nular_expression
                     (variable))))))
-          (binary_command_4)
+          (alphanumeric_binary_command_4)
           (expression
             (nular_expression
               (code_block
@@ -171,7 +171,7 @@ func
           (expression
             (nular_expression
               (variable)))
-          (binary_command_4)
+          (alphanumeric_binary_command_4)
           (expression
             (nular_expression
               (variable))))))))
@@ -189,7 +189,7 @@ count"abc"
     (statement
       (expression
         (unary_expression
-          (unary_command)
+          (alphanumeric_unary_command)
           (expression
             (nular_expression
               (string))))))))
@@ -222,7 +222,7 @@ count abc
     (statement
       (expression
         (unary_expression
-          (unary_command)
+          (alphanumeric_unary_command)
           (expression
             (nular_expression
               (variable))))))))
@@ -241,7 +241,7 @@ abc
     (statement
       (expression
         (unary_expression
-          (unary_command)
+          (alphanumeric_unary_command)
           (expression
             (nular_expression
               (variable))))))))
@@ -259,10 +259,10 @@ Command argument joining
     (statement
       (expression
         (unary_expression
-          (unary_command)
+          (special_unary_command)
           (expression
             (nular_expression
-              (nular_command))))))))
+              (alphanumeric_nular_command))))))))
 
 ==================
 Command argument joining
@@ -277,10 +277,10 @@ Command argument joining
     (statement
       (expression
         (unary_expression
-          (unary_command)
+          (special_unary_command)
           (expression
             (nular_expression
-              (nular_command))))))))
+              (alphanumeric_nular_command))))))))
 
 ==================
 Command argument joining
@@ -295,10 +295,10 @@ not false
     (statement
       (expression
         (unary_expression
-          (unary_command)
+          (alphanumeric_unary_command)
           (expression
             (nular_expression
-              (nular_command))))))))
+              (alphanumeric_nular_command))))))))
 
 ==================
 Command argument joining
@@ -331,7 +331,7 @@ Command argument joining
           (expression
             (nular_expression
               (number)))
-          (binary_command_6)
+          (special_binary_command_6)
           (expression
             (nular_expression
               (number))))))))
@@ -352,7 +352,7 @@ Command argument joining
           (expression
             (nular_expression
               (number)))
-          (binary_command_6)
+          (special_binary_command_6)
           (expression
             (nular_expression
               (number))))))))
@@ -373,7 +373,7 @@ Command argument joining
           (expression
             (nular_expression
               (number)))
-          (binary_command_6)
+          (special_binary_command_6)
           (expression
             (nular_expression
               (number))))))))
@@ -394,7 +394,7 @@ Command argument joining
           (expression
             (nular_expression
               (number)))
-          (binary_command_6)
+          (special_binary_command_6)
           (expression
             (nular_expression
               (number))))))))
@@ -415,7 +415,7 @@ abc + abc
           (expression
             (nular_expression
               (variable)))
-          (binary_command_6)
+          (special_binary_command_6)
           (expression
             (nular_expression
               (variable))))))))
@@ -436,7 +436,7 @@ abc+abc
           (expression
             (nular_expression
               (variable)))
-          (binary_command_6)
+          (special_binary_command_6)
           (expression
             (nular_expression
               (variable))))))))
@@ -457,7 +457,7 @@ abc+ abc
           (expression
             (nular_expression
               (variable)))
-          (binary_command_6)
+          (special_binary_command_6)
           (expression
             (nular_expression
               (variable))))))))
@@ -478,7 +478,7 @@ abc +abc
           (expression
             (nular_expression
               (variable)))
-          (binary_command_6)
+          (special_binary_command_6)
           (expression
             (nular_expression
               (variable))))))))
@@ -499,7 +499,7 @@ Command argument joining
           (expression
             (nular_expression
               (number)))
-          (binary_command_7)
+          (alphanumeric_binary_command_7)
           (expression
             (nular_expression
               (number))))))))
@@ -529,7 +529,7 @@ Command argument joining
           (expression
             (nular_expression
               (number)))
-          (binary_command_7)
+          (alphanumeric_binary_command_7)
           (expression
             (nular_expression
               (number))))))))
@@ -559,7 +559,7 @@ abc atan2 abc
           (expression
             (nular_expression
               (variable)))
-          (binary_command_7)
+          (alphanumeric_binary_command_7)
           (expression
             (nular_expression
               (variable))))))))
@@ -613,10 +613,10 @@ abc atan2 + abc
           (expression
             (nular_expression
               (variable)))
-          (binary_command_7)
+          (alphanumeric_binary_command_7)
           (expression
             (unary_expression
-              (unary_command)
+              (special_unary_command)
               (expression
                 (nular_expression
                   (variable))))))))))
@@ -637,10 +637,10 @@ abc atan2+abc
           (expression
             (nular_expression
               (variable)))
-          (binary_command_7)
+          (alphanumeric_binary_command_7)
           (expression
             (unary_expression
-              (unary_command)
+              (special_unary_command)
               (expression
                 (nular_expression
                   (variable))))))))))
@@ -661,10 +661,10 @@ abc atan2+ abc
           (expression
             (nular_expression
               (variable)))
-          (binary_command_7)
+          (alphanumeric_binary_command_7)
           (expression
             (unary_expression
-              (unary_command)
+              (special_unary_command)
               (expression
                 (nular_expression
                   (variable))))))))))
@@ -685,10 +685,10 @@ abc * abs abc
           (expression
             (nular_expression
               (variable)))
-          (binary_command_7)
+          (special_binary_command_7)
           (expression
             (unary_expression
-              (unary_command)
+              (alphanumeric_unary_command)
               (expression
                 (nular_expression
                   (variable))))))))))
@@ -709,10 +709,10 @@ abc *abs abc
           (expression
             (nular_expression
               (variable)))
-          (binary_command_7)
+          (special_binary_command_7)
           (expression
             (unary_expression
-              (unary_command)
+              (alphanumeric_unary_command)
               (expression
                 (nular_expression
                   (variable))))))))))
@@ -733,10 +733,10 @@ abc * + abc
           (expression
             (nular_expression
               (variable)))
-          (binary_command_7)
+          (special_binary_command_7)
           (expression
             (unary_expression
-              (unary_command)
+              (special_unary_command)
               (expression
                 (nular_expression
                   (variable))))))))))
@@ -757,10 +757,10 @@ abc *+ abc
           (expression
             (nular_expression
               (variable)))
-          (binary_command_7)
+          (special_binary_command_7)
           (expression
             (unary_expression
-              (unary_command)
+              (special_unary_command)
               (expression
                 (nular_expression
                   (variable))))))))))
@@ -781,10 +781,10 @@ abc*+abc
           (expression
             (nular_expression
               (variable)))
-          (binary_command_7)
+          (special_binary_command_7)
           (expression
             (unary_expression
-              (unary_command)
+              (special_unary_command)
               (expression
                 (nular_expression
                   (variable))))))))))
@@ -805,10 +805,10 @@ abc atan2 abs abc
           (expression
             (nular_expression
               (variable)))
-          (binary_command_7)
+          (alphanumeric_binary_command_7)
           (expression
             (unary_expression
-              (unary_command)
+              (alphanumeric_unary_command)
               (expression
                 (nular_expression
                   (variable))))))))))
@@ -846,11 +846,11 @@ count "abc" atan2 1
         (binary_expression
           (expression
             (unary_expression
-              (unary_command)
+              (alphanumeric_unary_command)
               (expression
                 (nular_expression
                   (string)))))
-          (binary_command_7)
+          (alphanumeric_binary_command_7)
           (expression
             (nular_expression
               (number))))))))
@@ -870,11 +870,11 @@ count "abc"atan2 1
         (binary_expression
           (expression
             (unary_expression
-              (unary_command)
+              (alphanumeric_unary_command)
               (expression
                 (nular_expression
                   (string)))))
-          (binary_command_7)
+          (alphanumeric_binary_command_7)
           (expression
             (nular_expression
               (number))))))))

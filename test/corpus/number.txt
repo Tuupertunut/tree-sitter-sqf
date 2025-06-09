@@ -356,7 +356,7 @@ Invalid number
     (statement
       (expression
         (unary_expression
-          (unary_command)
+          (special_unary_command)
           (expression
             (nular_expression
               (number))))))))
@@ -374,7 +374,7 @@ Invalid number
     (statement
       (expression
         (unary_expression
-          (unary_command)
+          (special_unary_command)
           (expression
             (nular_expression
               (number))))))))
@@ -395,7 +395,7 @@ Invalid number
           (expression
             (nular_expression
               (number)))
-          (binary_command_6)
+          (special_binary_command_6)
           (expression
             (nular_expression
               (number))))))))
@@ -416,7 +416,7 @@ Invalid number
           (expression
             (nular_expression
               (number)))
-          (binary_command_6)
+          (special_binary_command_6)
           (expression
             (nular_expression
               (number))))))))
@@ -551,7 +551,7 @@ Invalid number
           (expression
             (nular_expression
               (number)))
-          (binary_command_6)
+          (special_binary_command_6)
           (expression
             (nular_expression
               (number))))))))
@@ -569,7 +569,7 @@ Invalid number
     (statement
       (expression
         (unary_expression
-          (unary_command)
+          (special_unary_command)
           (expression
             (nular_expression
               (number))))))))
@@ -587,7 +587,7 @@ Invalid number
     (statement
       (expression
         (unary_expression
-          (unary_command)
+          (special_unary_command)
           (expression
             (nular_expression
               (number))))))))
@@ -659,7 +659,7 @@ Invalid number
           (expression
             (nular_expression
               (number)))
-          (binary_command_6)
+          (special_binary_command_6)
           (expression
             (nular_expression
               (number))))))))

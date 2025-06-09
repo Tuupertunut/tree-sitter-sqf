@@ -32,7 +32,7 @@ Valid parentheses
           (parentheses_expression
             (expression
               (unary_expression
-                (unary_command)
+                (alphanumeric_unary_command)
                 (expression
                   (nular_expression
                     (variable)))))))))))

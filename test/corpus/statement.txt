@@ -70,7 +70,7 @@ isServer
     (statement
       (expression
         (nular_expression
-          (nular_command))))))
+          (alphanumeric_nular_command))))))
 
 ==================
 Unary command
@@ -85,7 +85,7 @@ setViewDistance abc
     (statement
       (expression
         (unary_expression
-          (unary_command)
+          (alphanumeric_unary_command)
           (expression
             (nular_expression
               (variable))))))))
@@ -115,7 +115,7 @@ xyz addWeaponCargo abc
           (expression
             (nular_expression
               (variable)))
-          (binary_command_4)
+          (alphanumeric_binary_command_4)
           (expression
             (nular_expression
               (variable))))))))
@@ -145,13 +145,13 @@ Binary command precedence
           (expression
             (nular_expression
               (number)))
-          (binary_command_6)
+          (special_binary_command_6)
           (expression
             (binary_expression
               (expression
                 (nular_expression
                   (number)))
-              (binary_command_7)
+              (special_binary_command_7)
               (expression
                 (nular_expression
                   (number))))))))))
@@ -174,11 +174,11 @@ Binary command precedence
               (expression
                 (nular_expression
                   (number)))
-              (binary_command_7)
+              (special_binary_command_7)
               (expression
                 (nular_expression
                   (number)))))
-          (binary_command_6)
+          (special_binary_command_6)
           (expression
             (nular_expression
               (number))))))))
@@ -199,10 +199,10 @@ array select count another
           (expression
             (nular_expression
               (variable)))
-          (binary_command_4)
+          (alphanumeric_binary_command_4)
           (expression
             (unary_expression
-              (unary_command)
+              (alphanumeric_unary_command)
               (expression
                 (nular_expression
                   (variable))))))))))
@@ -223,10 +223,10 @@ array select call func
           (expression
             (nular_expression
               (variable)))
-          (binary_command_4)
+          (alphanumeric_binary_command_4)
           (expression
             (unary_expression
-              (unary_command)
+              (alphanumeric_unary_command)
               (expression
                 (nular_expression
                   (variable))))))))))
@@ -244,10 +244,10 @@ isPlayer call func
     (statement
       (expression
         (unary_expression
-          (unary_command)
+          (alphanumeric_unary_command)
           (expression
             (unary_expression
-              (unary_command)
+              (alphanumeric_unary_command)
               (expression
                 (nular_expression
                   (variable))))))))))
@@ -268,7 +268,7 @@ args call func
           (expression
             (nular_expression
               (variable)))
-          (binary_command_4)
+          (alphanumeric_binary_command_4)
           (expression
             (nular_expression
               (variable))))))))
@@ -286,7 +286,7 @@ private abc
     (statement
       (expression
         (unary_expression
-          (unary_command)
+          (alphanumeric_unary_command)
           (expression
             (nular_expression
               (variable))))))))

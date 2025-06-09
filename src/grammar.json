@@ -133,7 +133,7 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "nular_command"
+            "name": "alphanumeric_nular_command"
           },
           {
             "type": "SYMBOL",
@@ -169,8 +169,17 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "unary_command"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "special_unary_command"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "alphanumeric_unary_command"
+              }
+            ]
           },
           {
             "type": "SYMBOL",
@@ -194,7 +203,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "binary_command_9"
+                "name": "special_binary_command_9"
               },
               {
                 "type": "SYMBOL",
@@ -215,7 +224,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "binary_command_8"
+                "name": "special_binary_command_8"
               },
               {
                 "type": "SYMBOL",
@@ -235,8 +244,17 @@
                 "name": "expression"
               },
               {
-                "type": "SYMBOL",
-                "name": "binary_command_7"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "special_binary_command_7"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "alphanumeric_binary_command_7"
+                  }
+                ]
               },
               {
                 "type": "SYMBOL",
@@ -256,8 +274,17 @@
                 "name": "expression"
               },
               {
-                "type": "SYMBOL",
-                "name": "binary_command_6"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "special_binary_command_6"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "alphanumeric_binary_command_6"
+                  }
+                ]
               },
               {
                 "type": "SYMBOL",
@@ -278,7 +305,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "binary_command_5"
+                "name": "alphanumeric_binary_command_5"
               },
               {
                 "type": "SYMBOL",
@@ -298,8 +325,17 @@
                 "name": "expression"
               },
               {
-                "type": "SYMBOL",
-                "name": "binary_command_4"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "special_binary_command_4"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "alphanumeric_binary_command_4"
+                  }
+                ]
               },
               {
                 "type": "SYMBOL",
@@ -320,7 +356,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "binary_command_3"
+                "name": "special_binary_command_3"
               },
               {
                 "type": "SYMBOL",
@@ -340,8 +376,17 @@
                 "name": "expression"
               },
               {
-                "type": "SYMBOL",
-                "name": "binary_command_2"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "special_binary_command_2"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "alphanumeric_binary_command_2"
+                  }
+                ]
               },
               {
                 "type": "SYMBOL",
@@ -361,8 +406,17 @@
                 "name": "expression"
               },
               {
-                "type": "SYMBOL",
-                "name": "binary_command_1"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "special_binary_command_1"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "alphanumeric_binary_command_1"
+                  }
+                ]
               },
               {
                 "type": "SYMBOL",
@@ -497,7 +551,7 @@
         }
       ]
     },
-    "nular_command": {
+    "alphanumeric_nular_command": {
       "type": "TOKEN",
       "content": {
         "type": "CHOICE",
@@ -2025,7 +2079,27 @@
         ]
       }
     },
-    "unary_command": {
+    "special_unary_command": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "!"
+          },
+          {
+            "type": "STRING",
+            "value": "+"
+          },
+          {
+            "type": "STRING",
+            "value": "-"
+          }
+        ]
+      }
+    },
+    "alphanumeric_unary_command": {
       "type": "CHOICE",
       "members": [
         {
@@ -2038,18 +2112,6 @@
           "content": {
             "type": "CHOICE",
             "members": [
-              {
-                "type": "STRING",
-                "value": "!"
-              },
-              {
-                "type": "STRING",
-                "value": "+"
-              },
-              {
-                "type": "STRING",
-                "value": "-"
-              },
               {
                 "type": "PATTERN",
                 "value": "abs",
@@ -8615,21 +8677,21 @@
         }
       ]
     },
-    "binary_command_9": {
+    "special_binary_command_9": {
       "type": "TOKEN",
       "content": {
         "type": "STRING",
         "value": "#"
       }
     },
-    "binary_command_8": {
+    "special_binary_command_8": {
       "type": "TOKEN",
       "content": {
         "type": "STRING",
         "value": "^"
       }
     },
-    "binary_command_7": {
+    "special_binary_command_7": {
       "type": "TOKEN",
       "content": {
         "type": "CHOICE",
@@ -8645,7 +8707,15 @@
           {
             "type": "STRING",
             "value": "/"
-          },
+          }
+        ]
+      }
+    },
+    "alphanumeric_binary_command_7": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
           {
             "type": "PATTERN",
             "value": "atan2",
@@ -8659,7 +8729,7 @@
         ]
       }
     },
-    "binary_command_6": {
+    "special_binary_command_6": {
       "type": "TOKEN",
       "content": {
         "type": "CHOICE",
@@ -8671,7 +8741,15 @@
           {
             "type": "STRING",
             "value": "-"
-          },
+          }
+        ]
+      }
+    },
+    "alphanumeric_binary_command_6": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
           {
             "type": "PATTERN",
             "value": "max",
@@ -8685,7 +8763,7 @@
         ]
       }
     },
-    "binary_command_5": {
+    "alphanumeric_binary_command_5": {
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
@@ -8693,15 +8771,18 @@
         "flags": "i"
       }
     },
-    "binary_command_4": {
+    "special_binary_command_4": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": ":"
+      }
+    },
+    "alphanumeric_binary_command_4": {
       "type": "TOKEN",
       "content": {
         "type": "CHOICE",
         "members": [
-          {
-            "type": "STRING",
-            "value": ":"
-          },
           {
             "type": "PATTERN",
             "value": "action",
@@ -14395,7 +14476,7 @@
         ]
       }
     },
-    "binary_command_3": {
+    "special_binary_command_3": {
       "type": "TOKEN",
       "content": {
         "type": "CHOICE",
@@ -14431,38 +14512,34 @@
         ]
       }
     },
-    "binary_command_2": {
+    "special_binary_command_2": {
       "type": "TOKEN",
       "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "&&"
-          },
-          {
-            "type": "PATTERN",
-            "value": "and",
-            "flags": "i"
-          }
-        ]
+        "type": "STRING",
+        "value": "&&"
       }
     },
-    "binary_command_1": {
+    "alphanumeric_binary_command_2": {
       "type": "TOKEN",
       "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "||"
-          },
-          {
-            "type": "PATTERN",
-            "value": "or",
-            "flags": "i"
-          }
-        ]
+        "type": "PATTERN",
+        "value": "and",
+        "flags": "i"
+      }
+    },
+    "special_binary_command_1": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "||"
+      }
+    },
+    "alphanumeric_binary_command_1": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "or",
+        "flags": "i"
       }
     }
   },
@@ -14475,7 +14552,7 @@
   "conflicts": [
     [
       "assignment_modifier",
-      "unary_command"
+      "alphanumeric_unary_command"
     ]
   ],
   "precedences": [],

@@ -23,7 +23,7 @@ module.exports = grammar({
 
 	word: ($) => $.variable,
 
-	conflicts: ($) => [[$.assignment_modifier, $.unary_command]],
+	conflicts: ($) => [[$.assignment_modifier, $.alphanumeric_unary_command]],
 
 	extras: ($) => [/\s/],
 
@@ -52,7 +52,7 @@ module.exports = grammar({
 			prec(
 				11,
 				choice(
-					$.nular_command,
+					$.alphanumeric_nular_command,
 					$.variable,
 					$.string,
 					$.number,
@@ -62,19 +62,73 @@ module.exports = grammar({
 				),
 			),
 
-		unary_expression: ($) => prec(10, seq($.unary_command, $.expression)),
+		unary_expression: ($) =>
+			prec(
+				10,
+				seq(
+					choice($.special_unary_command, $.alphanumeric_unary_command),
+					$.expression,
+				),
+			),
 
 		binary_expression: ($) =>
 			choice(
-				prec.left(9, seq($.expression, $.binary_command_9, $.expression)),
-				prec.left(8, seq($.expression, $.binary_command_8, $.expression)),
-				prec.left(7, seq($.expression, $.binary_command_7, $.expression)),
-				prec.left(6, seq($.expression, $.binary_command_6, $.expression)),
-				prec.left(5, seq($.expression, $.binary_command_5, $.expression)),
-				prec.left(4, seq($.expression, $.binary_command_4, $.expression)),
-				prec.left(3, seq($.expression, $.binary_command_3, $.expression)),
-				prec.left(2, seq($.expression, $.binary_command_2, $.expression)),
-				prec.left(1, seq($.expression, $.binary_command_1, $.expression)),
+				prec.left(
+					9,
+					seq($.expression, $.special_binary_command_9, $.expression),
+				),
+				prec.left(
+					8,
+					seq($.expression, $.special_binary_command_8, $.expression),
+				),
+				prec.left(
+					7,
+					seq(
+						$.expression,
+						choice($.special_binary_command_7, $.alphanumeric_binary_command_7),
+						$.expression,
+					),
+				),
+				prec.left(
+					6,
+					seq(
+						$.expression,
+						choice($.special_binary_command_6, $.alphanumeric_binary_command_6),
+						$.expression,
+					),
+				),
+				prec.left(
+					5,
+					seq($.expression, $.alphanumeric_binary_command_5, $.expression),
+				),
+				prec.left(
+					4,
+					seq(
+						$.expression,
+						choice($.special_binary_command_4, $.alphanumeric_binary_command_4),
+						$.expression,
+					),
+				),
+				prec.left(
+					3,
+					seq($.expression, $.special_binary_command_3, $.expression),
+				),
+				prec.left(
+					2,
+					seq(
+						$.expression,
+						choice($.special_binary_command_2, $.alphanumeric_binary_command_2),
+						$.expression,
+					),
+				),
+				prec.left(
+					1,
+					seq(
+						$.expression,
+						choice($.special_binary_command_1, $.alphanumeric_binary_command_1),
+						$.expression,
+					),
+				),
 			),
 
 		variable: ($) => token(prec(-1, /[a-zA-Z_][a-zA-Z0-9_]*/)),
@@ -97,7 +151,7 @@ module.exports = grammar({
 
 		comment: ($) => choice(/\/\/[^\n]*/, /\/\*[^*]*(\*([^*/][^*]*)?)*\*\//),
 
-		nular_command: ($) =>
+		alphanumeric_nular_command: ($) =>
 			token(
 				choice(
 					/acctime/i,
@@ -407,16 +461,14 @@ module.exports = grammar({
 				),
 			),
 
-		unary_command: ($) =>
+		special_unary_command: ($) => token(choice("!", "+", "-")),
+		alphanumeric_unary_command: ($) =>
 			choice(
 				// private is both a unary command and an assignment modifier. Handling it as a
 				// separate token so we can declare a conflict between the two uses.
 				/private/i,
 				token(
 					choice(
-						"!",
-						"+",
-						"-",
 						/abs/i,
 						/acos/i,
 						/action/i,
@@ -1733,15 +1785,17 @@ module.exports = grammar({
 				),
 			),
 
-		binary_command_9: ($) => token("#"),
-		binary_command_8: ($) => token("^"),
-		binary_command_7: ($) => token(choice("%", "*", "/", /atan2/i, /mod/i)),
-		binary_command_6: ($) => token(choice("+", "-", /max/i, /min/i)),
-		binary_command_5: ($) => token(/else/i),
-		binary_command_4: ($) =>
+		special_binary_command_9: ($) => token("#"),
+		special_binary_command_8: ($) => token("^"),
+		special_binary_command_7: ($) => token(choice("%", "*", "/")),
+		alphanumeric_binary_command_7: ($) => token(choice(/atan2/i, /mod/i)),
+		special_binary_command_6: ($) => token(choice("+", "-")),
+		alphanumeric_binary_command_6: ($) => token(choice(/max/i, /min/i)),
+		alphanumeric_binary_command_5: ($) => token(/else/i),
+		special_binary_command_4: ($) => token(":"),
+		alphanumeric_binary_command_4: ($) =>
 			token(
 				choice(
-					":",
 					/action/i,
 					/actionnow/i,
 					/actionparams/i,
@@ -2882,9 +2936,11 @@ module.exports = grammar({
 					/worldtoscreen/i,
 				),
 			),
-		binary_command_3: ($) =>
+		special_binary_command_3: ($) =>
 			token(choice("!=", "<", "<=", "==", ">", ">=", ">>")),
-		binary_command_2: ($) => token(choice("&&", /and/i)),
-		binary_command_1: ($) => token(choice("||", /or/i)),
+		special_binary_command_2: ($) => token("&&"),
+		alphanumeric_binary_command_2: ($) => token(/and/i),
+		special_binary_command_1: ($) => token("||"),
+		alphanumeric_binary_command_1: ($) => token(/or/i),
 	},
 });
