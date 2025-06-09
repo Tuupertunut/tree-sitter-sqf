@@ -245,3 +245,662 @@ abc
           (expression
             (nular_expression
               (variable))))))))
+
+==================
+Command argument joining
+==================
+
+! false
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (unary_command)
+          (expression
+            (nular_expression
+              (nular_command))))))))
+
+==================
+Command argument joining
+==================
+
+!false
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (unary_command)
+          (expression
+            (nular_expression
+              (nular_command))))))))
+
+==================
+Command argument joining
+==================
+
+not false
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (unary_command)
+          (expression
+            (nular_expression
+              (nular_command))))))))
+
+==================
+Command argument joining
+==================
+
+notfalse
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (variable))))))
+
+==================
+Command argument joining
+==================
+
+1 + 1
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (number)))
+          (binary_command_6)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Command argument joining
+==================
+
+1+1
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (number)))
+          (binary_command_6)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Command argument joining
+==================
+
+1+ 1
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (number)))
+          (binary_command_6)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Command argument joining
+==================
+
+1 +1
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (number)))
+          (binary_command_6)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Command argument joining
+==================
+
+abc + abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_6)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Command argument joining
+==================
+
+abc+abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_6)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Command argument joining
+==================
+
+abc+ abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_6)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Command argument joining
+==================
+
+abc +abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_6)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Command argument joining
+==================
+
+1 atan2 1
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (number)))
+          (binary_command_7)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Command argument joining
+:error
+==================
+
+1atan21
+
+------------------
+
+==================
+Command argument joining
+==================
+
+1atan2 1
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (number)))
+          (binary_command_7)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Command argument joining
+:error
+==================
+
+1 atan21
+
+------------------
+
+==================
+Command argument joining
+==================
+
+abc atan2 abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_7)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Command argument joining
+==================
+
+abcatan2abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (variable))))))
+
+==================
+Command argument joining
+:error
+==================
+
+abcatan2 abc
+
+------------------
+
+==================
+Command argument joining
+:error
+==================
+
+abc atan2abc
+
+------------------
+
+==================
+Command argument joining
+==================
+
+abc atan2 + abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_7)
+          (expression
+            (unary_expression
+              (unary_command)
+              (expression
+                (nular_expression
+                  (variable))))))))))
+
+==================
+Command argument joining
+==================
+
+abc atan2+abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_7)
+          (expression
+            (unary_expression
+              (unary_command)
+              (expression
+                (nular_expression
+                  (variable))))))))))
+
+==================
+Command argument joining
+==================
+
+abc atan2+ abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_7)
+          (expression
+            (unary_expression
+              (unary_command)
+              (expression
+                (nular_expression
+                  (variable))))))))))
+
+==================
+Command argument joining
+==================
+
+abc * abs abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_7)
+          (expression
+            (unary_expression
+              (unary_command)
+              (expression
+                (nular_expression
+                  (variable))))))))))
+
+==================
+Command argument joining
+==================
+
+abc *abs abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_7)
+          (expression
+            (unary_expression
+              (unary_command)
+              (expression
+                (nular_expression
+                  (variable))))))))))
+
+==================
+Command argument joining
+==================
+
+abc * + abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_7)
+          (expression
+            (unary_expression
+              (unary_command)
+              (expression
+                (nular_expression
+                  (variable))))))))))
+
+==================
+Command argument joining
+==================
+
+abc *+ abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_7)
+          (expression
+            (unary_expression
+              (unary_command)
+              (expression
+                (nular_expression
+                  (variable))))))))))
+
+==================
+Command argument joining
+==================
+
+abc*+abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_7)
+          (expression
+            (unary_expression
+              (unary_command)
+              (expression
+                (nular_expression
+                  (variable))))))))))
+
+==================
+Command argument joining
+==================
+
+abc atan2 abs abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (variable)))
+          (binary_command_7)
+          (expression
+            (unary_expression
+              (unary_command)
+              (expression
+                (nular_expression
+                  (variable))))))))))
+
+==================
+Command argument joining
+:error
+==================
+
+abc atan2absabc
+
+------------------
+
+==================
+Command argument joining
+:error
+==================
+
+abc atan2abs abc
+
+------------------
+
+==================
+Command argument joining
+==================
+
+count "abc" atan2 1
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (unary_expression
+              (unary_command)
+              (expression
+                (nular_expression
+                  (string)))))
+          (binary_command_7)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Command argument joining
+==================
+
+count "abc"atan2 1
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (unary_expression
+              (unary_command)
+              (expression
+                (nular_expression
+                  (string)))))
+          (binary_command_7)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Command argument ambiguity
+:error
+==================
+
+0x1atan2 0x1
+
+------------------
+
+==================
+Assignment modifier joining
+==================
+
+private_xyz = abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (assignment
+        (variable)
+        (expression
+          (nular_expression
+            (variable)))))))

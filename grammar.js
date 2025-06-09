@@ -9,6 +9,13 @@
 
 // TODO: comments
 // TODO: preproc c
+// TODO: must have whitespace between:
+// variable alphanumeric_command
+// alphanumeric_command variable
+// alphanumeric_command alphanumeric_command
+// alphanumeric_command number
+// private variable
+// (hexadecimal_number hexadecimal_starting_command)
 // HEMTT: 2. 2.e3 .2e3
 
 module.exports = grammar({
