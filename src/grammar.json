@@ -539,17 +539,20 @@
       ]
     },
     "comment": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "\\/\\/[^\\n]*"
-        },
-        {
-          "type": "PATTERN",
-          "value": "\\/\\*[^*]*(\\*([^*/][^*]*)?)*\\*\\/"
-        }
-      ]
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "\\/\\/[^\\n]*"
+          },
+          {
+            "type": "PATTERN",
+            "value": "\\/\\*[^*]*(\\*([^*/][^*]*)?)*(\\*\\/)?"
+          }
+        ]
+      }
     },
     "alphanumeric_nular_command": {
       "type": "TOKEN",
@@ -14547,6 +14550,10 @@
     {
       "type": "PATTERN",
       "value": "\\s"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "comment"
     }
   ],
   "conflicts": [

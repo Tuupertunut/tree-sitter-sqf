@@ -340,6 +340,11 @@
     "named": true
   },
   {
+    "type": "comment",
+    "named": true,
+    "extra": true
+  },
+  {
     "type": "number",
     "named": true
   },

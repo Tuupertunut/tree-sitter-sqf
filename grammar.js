@@ -7,15 +7,7 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
-// TODO: comments
 // TODO: preproc c
-// TODO: must have whitespace between:
-// variable alphanumeric_command
-// alphanumeric_command variable
-// alphanumeric_command alphanumeric_command
-// alphanumeric_command number
-// private variable
-// (hexadecimal_number hexadecimal_starting_command)
 // HEMTT: 2. 2.e3 .2e3
 
 module.exports = grammar({
@@ -25,7 +17,7 @@ module.exports = grammar({
 
 	conflicts: ($) => [[$.assignment_modifier, $.alphanumeric_unary_command]],
 
-	extras: ($) => [/\s/],
+	extras: ($) => [/\s/, $.comment],
 
 	rules: {
 		source_file: ($) => choice(repeat(";"), $.code),
@@ -149,7 +141,8 @@ module.exports = grammar({
 
 		parentheses_expression: ($) => seq("(", $.expression, ")"),
 
-		comment: ($) => choice(/\/\/[^\n]*/, /\/\*[^*]*(\*([^*/][^*]*)?)*\*\//),
+		comment: ($) =>
+			token(choice(/\/\/[^\n]*/, /\/\*[^*]*(\*([^*/][^*]*)?)*(\*\/)?/)),
 
 		alphanumeric_nular_command: ($) =>
 			token(

@@ -1,0 +1,546 @@
+==================
+Valid comment
+==================
+
+"abc"//comment
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string)))))
+  (comment))
+
+==================
+Valid comment
+==================
+
+"abc" // comment
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string)))))
+  (comment))
+
+==================
+Valid comment
+==================
+
+"abc" /* comment */
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string)))))
+  (comment))
+
+==================
+Valid comment
+==================
+
+"abc" /* comment
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string)))))
+  (comment))
+
+==================
+Valid comment
+==================
+
+"abc" /* comment /* comment
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string)))))
+  (comment))
+
+==================
+Valid comment
+==================
+
+isPlayer /* comment */ player
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (alphanumeric_unary_command)
+          (comment)
+          (expression
+            (nular_expression
+              (alphanumeric_nular_command))))))))
+
+==================
+Valid comment
+==================
+
+-/*comment*/1
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (special_unary_command)
+          (comment)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Valid comment
+==================
+
+-/**/1
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (special_unary_command)
+          (comment)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Valid comment
+==================
+
+-/***/1
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (special_unary_command)
+          (comment)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Valid comment
+==================
+
+-/****/1
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (special_unary_command)
+          (comment)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Valid comment
+==================
+
+-/*/*/1
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (special_unary_command)
+          (comment)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Valid comment
+==================
+
+-/*/**/1
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (special_unary_command)
+          (comment)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Valid comment
+==================
+
+-/**comment*/1
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (special_unary_command)
+          (comment)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Valid comment
+==================
+
+-/*comm*ent*/1
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (special_unary_command)
+          (comment)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Valid comment
+==================
+
+-/*comment**/1
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (special_unary_command)
+          (comment)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Valid comment
+==================
+
+-/*comm*ent/*/1
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (special_unary_command)
+          (comment)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Valid comment
+==================
+
+[1,// comment
+2]
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (array
+            (expression
+              (nular_expression
+                (number)))
+            (comment)
+            (expression
+              (nular_expression
+                (number)))))))))
+
+==================
+Invalid comment
+:error
+==================
+
+-/**/*/1
+
+------------------
+
+==================
+No comments in strings
+==================
+
+"ab//notcomment"
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string))))))
+
+==================
+No comments in strings
+==================
+
+"ab/*notcomment*/c"
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string))))))
+
+==================
+Comment inside variable
+==================
+
+ab/*comment*/c
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (variable)))))
+  (comment))
+
+==================
+Comment inside number
+==================
+
+2/*comment*/5
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number)))))
+  (comment))
+
+==================
+Comment inside command
+==================
+
+si/*comment*/n 30
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (alphanumeric_unary_command)
+          (comment)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Comment does not split ambiguous variable
+==================
+
+sin/*comment*/abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (variable)))))
+  (comment))
+
+==================
+Comment splits variable
+:error
+==================
+
+ab//comment
+c
+
+------------------
+
+==================
+Comment splits number
+:error
+==================
+
+2//comment
+5
+
+------------------
+
+==================
+Comment splits command
+:error
+==================
+
+si//comment
+n 30
+
+------------------
+
+==================
+Comment splits ambiguous variable
+==================
+
+sin//comment
+abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (alphanumeric_unary_command)
+          (comment)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Comment and command ambiguity
+==================
+
+2/*comment*//5
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (nular_expression
+              (number)))
+          (comment)
+          (special_binary_command_7)
+          (expression
+            (nular_expression
+              (number))))))))
+
+==================
+Comment and command ambiguity
+==================
+
+2/*comment*///5
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number)))))
+  (comment)
+  (comment))
+
+==================
+Comment and command ambiguity
+:error
+==================
+
+2///comment
+5
+
+------------------
+
+==================
+No comment joining
+==================
+
+2/*comment*/+5/*comment*/+3
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (binary_expression
+              (expression
+                (nular_expression
+                  (number)))
+              (comment)
+              (special_binary_command_6)
+              (expression
+                (nular_expression
+                  (number)))))
+          (comment)
+          (special_binary_command_6)
+          (expression
+            (nular_expression
+              (number))))))))
+
