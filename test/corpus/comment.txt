@@ -1,4 +1,59 @@
 ==================
+Comment only
+==================
+
+//comment
+
+------------------
+
+(source_file
+  (comment))
+
+==================
+Comment only
+==================
+
+/*comment*/
+
+------------------
+
+(source_file
+  (comment))
+
+==================
+Valid comment
+==================
+
+//comment
+"abc"
+
+------------------
+
+(source_file
+  (comment)
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string))))))
+
+==================
+Valid comment
+==================
+
+/*comment*/"abc"
+
+------------------
+
+(source_file
+  (comment)
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string))))))
+
+==================
 Valid comment
 ==================
 
