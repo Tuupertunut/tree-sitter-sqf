@@ -1,0 +1,293 @@
+==================
+Valid define macro
+==================
+
+#define abc 2
+
+------------------
+
+(source_file
+  (macro))
+
+==================
+Valid define macro and command
+==================
+
+#define abc 2
+sin abc
+
+------------------
+
+(source_file
+  (macro)
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (alphanumeric_unary_command)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Valid multiline define macro
+==================
+
+#define abc isPlayer\
+player
+
+------------------
+
+(source_file
+  (macro))
+
+==================
+Valid multiline define macro
+==================
+
+#define abc isPlayer \
+player
+
+------------------
+
+(source_file
+  (macro))
+
+==================
+Valid multiline define macro and command
+==================
+
+#define abc isPlayer\
+player
+not abc
+
+------------------
+
+(source_file
+  (macro)
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (alphanumeric_unary_command)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Valid indented define macro and command
+==================
+
+  #define abc 2
+sin abc
+
+------------------
+
+(source_file
+  (macro)
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (alphanumeric_unary_command)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Valid define macro after command
+==================
+
+sin 30
+#define abc 2
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (alphanumeric_unary_command)
+          (expression
+            (nular_expression
+              (number)))))))
+  (macro))
+
+==================
+Valid define macro after command and empty lines
+==================
+
+sin 30
+
+
+#define abc 2
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (alphanumeric_unary_command)
+          (expression
+            (nular_expression
+              (number)))))))
+  (macro))
+
+==================
+Valid define macro between commands
+==================
+
+sin 30;
+#define abc 2
+cos abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (alphanumeric_unary_command)
+          (expression
+            (nular_expression
+              (number))))))
+    (macro)
+    (statement
+      (expression
+        (unary_expression
+          (alphanumeric_unary_command)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Valid indented define macro between commands
+==================
+
+sin 30;
+  #define abc 2
+cos abc
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (unary_expression
+          (alphanumeric_unary_command)
+          (expression
+            (nular_expression
+              (number))))))
+    (macro)
+    (statement
+      (expression
+        (unary_expression
+          (alphanumeric_unary_command)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Valid define macro inside array
+==================
+
+[1,
+#define abc 2
+2]
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (array
+            (expression
+              (nular_expression
+                (number)))
+            (macro)
+            (expression
+              (nular_expression
+                (number)))))))))
+
+==================
+Invalid define macro after variable
+:error
+==================
+
+abc #define abc 2
+
+------------------
+
+==================
+Valid parametric define macro
+==================
+
+#define CAR(NAME) displayName = NAME;
+
+------------------
+
+(source_file
+  (macro))
+
+==================
+Macro and command ambiguity
+==================
+
+[1,2]#define call func
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (binary_expression
+              (expression
+                (nular_expression
+                  (array
+                    (expression
+                      (nular_expression
+                        (number)))
+                    (expression
+                      (nular_expression
+                        (number))))))
+              (special_binary_command_9)
+              (expression
+                (nular_expression
+                  (variable)))))
+          (alphanumeric_binary_command_4)
+          (expression
+            (nular_expression
+              (variable))))))))
+
+==================
+Macro and command ambiguity
+==================
+
+[1,2]
+#define call func
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (array
+            (expression
+              (nular_expression
+                (number)))
+            (expression
+              (nular_expression
+                (number))))))))
+  (macro))

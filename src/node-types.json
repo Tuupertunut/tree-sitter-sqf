@@ -172,6 +172,11 @@
     }
   },
   {
+    "type": "macro",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "nular_expression",
     "named": true,
     "fields": {},

@@ -17,7 +17,9 @@ module.exports = grammar({
 
 	conflicts: ($) => [[$.assignment_modifier, $.alphanumeric_unary_command]],
 
-	extras: ($) => [/\s/, $.comment],
+	extras: ($) => [/\s/, $.comment, $.macro],
+
+	externals: ($) => [$._macro_hash],
 
 	rules: {
 		source_file: ($) => choice(repeat(";"), $.code),
@@ -143,6 +145,8 @@ module.exports = grammar({
 
 		comment: ($) =>
 			token(choice(/\/\/[^\n]*/, /\/\*[^*]*(\*([^*/][^*]*)?)*(\*\/)?/)),
+
+		macro: ($) => seq($._macro_hash, /(\\(\r?\n)?|[^\\\n])*/),
 
 		alphanumeric_nular_command: ($) =>
 			token(

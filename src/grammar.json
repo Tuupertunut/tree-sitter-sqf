@@ -554,6 +554,19 @@
         ]
       }
     },
+    "macro": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_macro_hash"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\\\(\\r?\\n)?|[^\\\\\\n])*"
+        }
+      ]
+    },
     "alphanumeric_nular_command": {
       "type": "TOKEN",
       "content": {
@@ -14554,6 +14567,10 @@
     {
       "type": "SYMBOL",
       "name": "comment"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "macro"
     }
   ],
   "conflicts": [
@@ -14563,7 +14580,12 @@
     ]
   ],
   "precedences": [],
-  "externals": [],
+  "externals": [
+    {
+      "type": "SYMBOL",
+      "name": "_macro_hash"
+    }
+  ],
   "inline": [],
   "supertypes": [],
   "reserved": {}
