@@ -456,6 +456,33 @@ si/*comment*/n 30
               (number))))))))
 
 ==================
+Comment inside macro definition
+==================
+
+#define ab(cd,ef) 5/* + cd*/ * ef
+
+------------------
+
+(source_file
+  (macro
+    (define_macro
+      (variable)
+      (macro_arguments
+        (variable)
+        (variable))
+      (macro_definition)))
+  (comment))
+
+==================
+Comment inside macro arguments
+:error
+==================
+
+#define ab(cd/*,ef*/) 5 + cd * ef
+
+------------------
+
+==================
 Comment does not split ambiguous variable
 ==================
 

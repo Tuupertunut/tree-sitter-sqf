@@ -559,13 +559,95 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_macro_hash"
+          "name": "_macro_line_begin"
         },
         {
-          "type": "PATTERN",
-          "value": "(\\\\(\\r?\\n)?|[^\\\\\\n])*"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "define_macro"
+            }
+          ]
         }
       ]
+    },
+    "define_macro": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#define"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "variable"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "macro_arguments"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "macro_definition"
+        }
+      ]
+    },
+    "macro_arguments": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "PREC",
+            "value": 1,
+            "content": {
+              "type": "STRING",
+              "value": "("
+            }
+          }
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "variable"
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "macro_definition": {
+      "type": "PATTERN",
+      "value": "(\\\\(\\r?\\n)?|[^\\\\\\n])*"
     },
     "alphanumeric_nular_command": {
       "type": "TOKEN",
@@ -14583,7 +14665,7 @@
   "externals": [
     {
       "type": "SYMBOL",
-      "name": "_macro_hash"
+      "name": "_macro_line_begin"
     }
   ],
   "inline": [],

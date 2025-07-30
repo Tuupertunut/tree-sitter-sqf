@@ -7,7 +7,10 @@ Valid define macro
 ------------------
 
 (source_file
-  (macro))
+  (macro
+    (define_macro
+      (variable)
+      (macro_definition))))
 
 ==================
 Valid define macro and command
@@ -19,7 +22,10 @@ sin abc
 ------------------
 
 (source_file
-  (macro)
+  (macro
+    (define_macro
+      (variable)
+      (macro_definition)))
   (code
     (statement
       (expression
@@ -39,7 +45,10 @@ player
 ------------------
 
 (source_file
-  (macro))
+  (macro
+    (define_macro
+      (variable)
+      (macro_definition))))
 
 ==================
 Valid multiline define macro
@@ -51,7 +60,10 @@ player
 ------------------
 
 (source_file
-  (macro))
+  (macro
+    (define_macro
+      (variable)
+      (macro_definition))))
 
 ==================
 Valid multiline define macro and command
@@ -64,7 +76,10 @@ not abc
 ------------------
 
 (source_file
-  (macro)
+  (macro
+    (define_macro
+      (variable)
+      (macro_definition)))
   (code
     (statement
       (expression
@@ -84,7 +99,10 @@ sin abc
 ------------------
 
 (source_file
-  (macro)
+  (macro
+    (define_macro
+      (variable)
+      (macro_definition)))
   (code
     (statement
       (expression
@@ -112,7 +130,10 @@ sin 30
           (expression
             (nular_expression
               (number)))))))
-  (macro))
+  (macro
+    (define_macro
+      (variable)
+      (macro_definition))))
 
 ==================
 Valid define macro after command and empty lines
@@ -134,7 +155,10 @@ sin 30
           (expression
             (nular_expression
               (number)))))))
-  (macro))
+  (macro
+    (define_macro
+      (variable)
+      (macro_definition))))
 
 ==================
 Valid define macro between commands
@@ -155,7 +179,10 @@ cos abc
           (expression
             (nular_expression
               (number))))))
-    (macro)
+    (macro
+      (define_macro
+        (variable)
+        (macro_definition)))
     (statement
       (expression
         (unary_expression
@@ -183,7 +210,10 @@ cos abc
           (expression
             (nular_expression
               (number))))))
-    (macro)
+    (macro
+      (define_macro
+        (variable)
+        (macro_definition)))
     (statement
       (expression
         (unary_expression
@@ -211,7 +241,10 @@ Valid define macro inside array
             (expression
               (nular_expression
                 (number)))
-            (macro)
+            (macro
+              (define_macro
+                (variable)
+                (macro_definition)))
             (expression
               (nular_expression
                 (number)))))))))
@@ -226,15 +259,256 @@ abc #define abc 2
 ------------------
 
 ==================
-Valid parametric define macro
+Invalid define macro with space after hash
+:error
 ==================
 
-#define CAR(NAME) displayName = NAME;
+# define abc 2
+
+------------------
+
+==================
+Invalid indented define macro with space after hash
+:error
+==================
+
+ # define abc 2
+
+------------------
+
+==================
+Invalid define macro with multiple hashes
+:error
+==================
+
+##define abc 2
+
+------------------
+
+==================
+Invalid define macro with comment after hash
+:error
+==================
+
+#/**/define abc 2
+
+------------------
+
+==================
+Invalid define macro with comment before hash
+:error
+==================
+
+/**/#define abc 2
+
+------------------
+
+==================
+Invalid uppercase define macro
+:error
+==================
+
+#DEFINE abc 2
+
+------------------
+
+==================
+Valid 0 argument define macro
+==================
+
+#define ab() 5
 
 ------------------
 
 (source_file
-  (macro))
+  (macro
+    (define_macro
+      (variable)
+      (macro_arguments)
+      (macro_definition))))
+
+==================
+Valid 1 argument define macro
+==================
+
+#define ab(cd) 5 + cd
+
+------------------
+
+(source_file
+  (macro
+    (define_macro
+      (variable)
+      (macro_arguments
+        (variable))
+      (macro_definition))))
+
+==================
+Valid 1 argument define macro with trailing comma
+==================
+
+#define ab(cd,) 5 + cd
+
+------------------
+
+(source_file
+  (macro
+    (define_macro
+      (variable)
+      (macro_arguments
+        (variable))
+      (macro_definition))))
+
+==================
+Valid 1 argument define macro with spaces and trailing comma
+==================
+
+#define ab(  cd  , ) 5 + cd
+
+------------------
+
+(source_file
+  (macro
+    (define_macro
+      (variable)
+      (macro_arguments
+        (variable))
+      (macro_definition))))
+
+==================
+Invalid 1 argument define macro with leading comma
+:error
+==================
+
+#define ab(,cd) 5 + cd
+
+------------------
+
+==================
+Invalid 1 argument define macro with 2 trailing commas
+:error
+==================
+
+#define ab(cd,,) 5 + cd
+
+------------------
+
+==================
+Valid 2 argument define macro
+==================
+
+#define ab(cd,ef) 5 + cd * ef
+
+------------------
+
+(source_file
+  (macro
+    (define_macro
+      (variable)
+      (macro_arguments
+        (variable)
+        (variable))
+      (macro_definition))))
+
+==================
+Valid 2 argument define macro with no commas
+==================
+
+#define ab(cd ef) 5 + cd * ef
+
+------------------
+
+(source_file
+  (macro
+    (define_macro
+      (variable)
+      (macro_arguments
+        (variable)
+        (variable))
+      (macro_definition))))
+
+==================
+Valid 2 argument define macro with spaces and trailing comma
+==================
+
+#define ab( cd  ,ef ,  ) 5 + cd * ef
+
+------------------
+
+(source_file
+  (macro
+    (define_macro
+      (variable)
+      (macro_arguments
+        (variable)
+        (variable))
+      (macro_definition))))
+
+==================
+Invalid 2 argument define macro with 2 commas between
+:error
+==================
+
+#define ab(cd,,ef) 5 + cd * ef
+
+------------------
+
+==================
+Valid 3 argument define macro with mixed spaces and commas
+==================
+
+#define ab(cd ef,gh) 5 + cd + ef + gh
+
+------------------
+
+(source_file
+  (macro
+    (define_macro
+      (variable)
+      (macro_arguments
+        (variable)
+        (variable)
+        (variable))
+      (macro_definition))))
+
+==================
+Invalid 1 argument define macro with space before arguments
+==================
+
+#define ab (cd) 5 + cd
+
+------------------
+
+(source_file
+  (macro
+    (define_macro
+      (variable)
+      (macro_definition))))
+
+==================
+Valid 1 argument define macro without space after arguments
+==================
+
+#define ab(cd)5 + cd
+
+------------------
+
+(source_file
+  (macro
+    (define_macro
+      (variable)
+      (macro_arguments
+        (variable))
+      (macro_definition))))
+
+==================
+Invalid 2 argument define macro with invalid characters
+:error
+==================
+
+#define ab(cd. ef) 5 + cd + ef
+
+------------------
 
 ==================
 Macro and command ambiguity
@@ -290,4 +564,7 @@ Macro and command ambiguity
             (expression
               (nular_expression
                 (number))))))))
-  (macro))
+  (macro
+    (define_macro
+      (variable)
+      (macro_definition))))

@@ -8,6 +8,7 @@
 // @ts-check
 
 // TODO: preproc c
+// TODO: arg macro calls
 // HEMTT: 2. 2.e3 .2e3
 
 module.exports = grammar({
@@ -19,7 +20,7 @@ module.exports = grammar({
 
 	extras: ($) => [/\s/, $.comment, $.macro],
 
-	externals: ($) => [$._macro_hash],
+	externals: ($) => [$._macro_line_begin],
 
 	rules: {
 		source_file: ($) => choice(repeat(";"), $.code),
@@ -146,7 +147,24 @@ module.exports = grammar({
 		comment: ($) =>
 			token(choice(/\/\/[^\n]*/, /\/\*[^*]*(\*([^*/][^*]*)?)*(\*\/)?/)),
 
-		macro: ($) => seq($._macro_hash, /(\\(\r?\n)?|[^\\\n])*/),
+		macro: ($) => seq($._macro_line_begin, choice($.define_macro)),
+
+		define_macro: ($) =>
+			seq(
+				"#define",
+				$.variable,
+				optional($.macro_arguments),
+				$.macro_definition,
+			),
+
+		macro_arguments: ($) =>
+			seq(
+				token.immediate(prec(1, "(")),
+				repeat(seq($.variable, optional(","))),
+				")",
+			),
+
+		macro_definition: ($) => /(\\(\r?\n)?|[^\\\n])*/,
 
 		alphanumeric_nular_command: ($) =>
 			token(

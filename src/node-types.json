@@ -149,6 +149,29 @@
     }
   },
   {
+    "type": "define_macro",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "macro_arguments",
+          "named": true
+        },
+        {
+          "type": "macro_definition",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "expression",
     "named": true,
     "fields": {},
@@ -174,7 +197,32 @@
   {
     "type": "macro",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "define_macro",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "macro_arguments",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "nular_expression",
@@ -289,6 +337,10 @@
     }
   },
   {
+    "type": "#define",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -348,6 +400,10 @@
     "type": "comment",
     "named": true,
     "extra": true
+  },
+  {
+    "type": "macro_definition",
+    "named": true
   },
   {
     "type": "number",

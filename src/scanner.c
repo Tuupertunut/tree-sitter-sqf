@@ -3,7 +3,7 @@
 
 enum TokenType
 {
-    _MACRO_HASH,
+    _MACRO_LINE_BEGIN,
 };
 
 void *tree_sitter_sqf_external_scanner_create() { return NULL; }
@@ -14,8 +14,9 @@ void tree_sitter_sqf_external_scanner_deserialize(void *p, const char *b, unsign
 
 bool tree_sitter_sqf_external_scanner_scan(void *payload, TSLexer *lexer, const bool *valid_symbols)
 {
-    if (valid_symbols[_MACRO_HASH])
+    if (valid_symbols[_MACRO_LINE_BEGIN])
     {
+        // _MACRO_LINE_BEGIN should match an empty string at the beginning of a line with a macro
         // Skip initial whitespace which is not at a new line
         while (iswspace(lexer->lookahead) && lexer->get_column(lexer) > 0)
         {
@@ -31,13 +32,12 @@ bool tree_sitter_sqf_external_scanner_scan(void *payload, TSLexer *lexer, const 
                 lexer->advance(lexer, true);
             }
 
-            // This character is the first non-whitespace character of a new line. Check if it's a
-            // hash.
+            // The next character is the first non-whitespace character of a new line. Check if it's
+            // a hash.
             if (lexer->lookahead == '#')
             {
-                lexer->advance(lexer, false);
                 // Accept the token
-                lexer->result_symbol = _MACRO_HASH;
+                lexer->result_symbol = _MACRO_LINE_BEGIN;
                 return true;
             }
         }
