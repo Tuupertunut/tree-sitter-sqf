@@ -337,7 +337,7 @@
     }
   },
   {
-    "type": "#define",
+    "type": "#",
     "named": false
   },
   {
@@ -400,6 +400,10 @@
     "type": "comment",
     "named": true,
     "extra": true
+  },
+  {
+    "type": "define",
+    "named": false
   },
   {
     "type": "macro_definition",

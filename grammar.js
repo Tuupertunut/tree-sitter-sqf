@@ -20,7 +20,7 @@ module.exports = grammar({
 
 	extras: ($) => [/\s/, $.comment, $.macro],
 
-	externals: ($) => [$._macro_line_begin],
+	externals: ($) => [$._macro_hash],
 
 	rules: {
 		source_file: ($) => choice(repeat(";"), $.code),
@@ -147,11 +147,11 @@ module.exports = grammar({
 		comment: ($) =>
 			token(choice(/\/\/[^\n]*/, /\/\*[^*]*(\*([^*/][^*]*)?)*(\*\/)?/)),
 
-		macro: ($) => seq($._macro_line_begin, choice($.define_macro)),
+		macro: ($) => seq(alias($._macro_hash, "#"), choice($.define_macro)),
 
 		define_macro: ($) =>
 			seq(
-				"#define",
+				"define",
 				$.variable,
 				optional($.macro_arguments),
 				$.macro_definition,

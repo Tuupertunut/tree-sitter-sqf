@@ -558,8 +558,13 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_macro_line_begin"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_macro_hash"
+          },
+          "named": false,
+          "value": "#"
         },
         {
           "type": "CHOICE",
@@ -577,7 +582,7 @@
       "members": [
         {
           "type": "STRING",
-          "value": "#define"
+          "value": "define"
         },
         {
           "type": "SYMBOL",
@@ -14665,7 +14670,7 @@
   "externals": [
     {
       "type": "SYMBOL",
-      "name": "_macro_line_begin"
+      "name": "_macro_hash"
     }
   ],
   "inline": [],

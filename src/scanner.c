@@ -3,7 +3,7 @@
 
 enum TokenType
 {
-    _MACRO_LINE_BEGIN,
+    _MACRO_HASH,
 };
 
 void *tree_sitter_sqf_external_scanner_create() { return NULL; }
@@ -14,9 +14,8 @@ void tree_sitter_sqf_external_scanner_deserialize(void *p, const char *b, unsign
 
 bool tree_sitter_sqf_external_scanner_scan(void *payload, TSLexer *lexer, const bool *valid_symbols)
 {
-    if (valid_symbols[_MACRO_LINE_BEGIN])
+    if (valid_symbols[_MACRO_HASH])
     {
-        // _MACRO_LINE_BEGIN should match an empty string at the beginning of a line with a macro
         // Skip initial whitespace which is not at a new line
         while (iswspace(lexer->lookahead) && lexer->get_column(lexer) > 0)
         {
@@ -36,9 +35,17 @@ bool tree_sitter_sqf_external_scanner_scan(void *payload, TSLexer *lexer, const 
             // a hash.
             if (lexer->lookahead == '#')
             {
-                // Accept the token
-                lexer->result_symbol = _MACRO_LINE_BEGIN;
-                return true;
+                lexer->advance(lexer, false);
+
+                // Check if there is a lowercase letter directly after the hash. This is checked
+                // here because whitespace or comments are not allowed after the hash and
+                // token.immediate() does not work for the macro name for some reason.
+                if (iswlower(lexer->lookahead))
+                {
+                    // Accept the token
+                    lexer->result_symbol = _MACRO_HASH;
+                    return true;
+                }
             }
         }
     }
