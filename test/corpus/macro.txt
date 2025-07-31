@@ -250,6 +250,139 @@ Valid define macro inside array
                 (number)))))))))
 
 ==================
+Valid define macro with multiple spaces
+==================
+
+#define   abc 2
+
+------------------
+
+(source_file
+  (macro
+    (define_macro
+      (variable)
+      (macro_definition))))
+
+==================
+Invalid define macro with no space
+:error
+==================
+
+#defineabc 2
+
+------------------
+
+==================
+Invalid define macro with newline
+:error
+==================
+
+#define
+abc 2
+
+------------------
+
+==================
+Invalid define macro with multiple newlines
+:error
+==================
+
+#define
+
+abc 2
+
+------------------
+
+==================
+Invalid define macro with space and newline
+:error
+==================
+
+#define 
+abc 2
+
+------------------
+
+==================
+Invalid define macro with newline and space
+:error
+==================
+
+#define
+ abc 2
+
+------------------
+
+==================
+Invalid define macro with escaped newline
+:error
+==================
+
+#define\
+abc 2
+
+------------------
+
+==================
+Valid define macro with space and escaped newline
+==================
+
+#define \
+abc 2
+
+------------------
+
+(source_file
+  (macro
+    (define_macro
+      (variable)
+      (macro_definition))))
+
+==================
+Valid define macro with escaped newline and space
+==================
+
+#define\
+ abc 2
+
+------------------
+
+(source_file
+  (macro
+    (define_macro
+      (variable)
+      (macro_definition))))
+
+==================
+Invalid multiline define macro
+==================
+
+#define abc
+2
+
+------------------
+
+(source_file
+  (macro
+    (define_macro
+      (variable)
+      (macro_definition)))
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Invalid define macro with comment
+:error
+==================
+
+#define /**/abc 2
+
+------------------
+
+==================
 Invalid define macro after variable
 :error
 ==================
@@ -470,6 +603,48 @@ Valid 3 argument define macro with mixed spaces and commas
         (variable)
         (variable))
       (macro_definition))))
+
+==================
+Valid 2 argument define macro with commas, spaces and escaped newlines
+==================
+
+#define ab( \
+cd\
+,ef\
+ ) 5 + cd * ef
+
+------------------
+
+(source_file
+  (macro
+    (define_macro
+      (variable)
+      (macro_arguments
+        (variable)
+        (variable))
+      (macro_definition))))
+
+==================
+Invalid 2 argument define macro with commas, spaces and escaped newlines
+:error
+==================
+
+#define ab( \
+cd \
+ ,ef\
+ ) 5 + cd * ef
+
+------------------
+
+==================
+Invalid 2 argument define macro with escaped newline
+:error
+==================
+
+#define ab(cd\
+ef) 5 + cd * ef
+
+------------------
 
 ==================
 Invalid 1 argument define macro with space before arguments

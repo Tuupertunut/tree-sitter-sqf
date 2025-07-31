@@ -20,7 +20,7 @@ module.exports = grammar({
 
 	extras: ($) => [/\s/, $.comment, $.macro],
 
-	externals: ($) => [$._macro_hash],
+	externals: ($) => [$._macro_hash, $._macro_whitespace],
 
 	rules: {
 		source_file: ($) => choice(repeat(";"), $.code),
@@ -152,6 +152,7 @@ module.exports = grammar({
 		define_macro: ($) =>
 			seq(
 				"define",
+				$._macro_whitespace,
 				$.variable,
 				optional($.macro_arguments),
 				$.macro_definition,

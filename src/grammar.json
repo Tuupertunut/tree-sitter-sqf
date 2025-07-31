@@ -586,6 +586,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "_macro_whitespace"
+        },
+        {
+          "type": "SYMBOL",
           "name": "variable"
         },
         {
@@ -14671,6 +14675,10 @@
     {
       "type": "SYMBOL",
       "name": "_macro_hash"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_macro_whitespace"
     }
   ],
   "inline": [],
