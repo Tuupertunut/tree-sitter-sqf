@@ -195,6 +195,21 @@
     }
   },
   {
+    "type": "include_macro",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "macro_path",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "macro",
     "named": true,
     "fields": {},
@@ -204,6 +219,14 @@
       "types": [
         {
           "type": "define_macro",
+          "named": true
+        },
+        {
+          "type": "include_macro",
+          "named": true
+        },
+        {
+          "type": "undef_macro",
           "named": true
         }
       ]
@@ -337,6 +360,21 @@
     }
   },
   {
+    "type": "undef_macro",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "#",
     "named": false
   },
@@ -406,7 +444,15 @@
     "named": false
   },
   {
+    "type": "include",
+    "named": false
+  },
+  {
     "type": "macro_definition",
+    "named": true
+  },
+  {
+    "type": "macro_path",
     "named": true
   },
   {
@@ -452,6 +498,10 @@
   {
     "type": "string",
     "named": true
+  },
+  {
+    "type": "undef",
+    "named": false
   },
   {
     "type": "variable",

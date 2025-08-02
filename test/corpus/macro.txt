@@ -250,6 +250,29 @@ Valid define macro inside array
                 (number)))))))))
 
 ==================
+Invalid define macro with no variable
+:error
+==================
+
+#define
+
+------------------
+
+==================
+Valid define macro with empty definition
+==================
+
+#define abc
+
+------------------
+
+(source_file
+  (macro
+    (define_macro
+      (variable)
+      (macro_definition))))
+
+==================
 Valid define macro with multiple spaces
 ==================
 
@@ -743,3 +766,123 @@ Macro and command ambiguity
     (define_macro
       (variable)
       (macro_definition))))
+
+==================
+Valid undef macro
+==================
+
+#undef abc
+
+------------------
+
+(source_file
+  (macro
+    (undef_macro
+      (variable))))
+
+==================
+Invalid undef macro with too many parts
+==================
+
+#undef abc 2
+
+------------------
+
+(source_file
+  (macro
+    (undef_macro
+      (variable)))
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (number))))))
+
+==================
+Valid include macro
+==================
+
+#include "abc"
+
+------------------
+
+(source_file
+  (macro
+    (include_macro
+      (macro_path))))
+
+==================
+Valid include macro
+==================
+
+#include <abc>
+
+------------------
+
+(source_file
+  (macro
+    (include_macro
+      (macro_path))))
+
+==================
+Invalid include macro with too many parts
+==================
+
+#include "abc" "def"
+
+------------------
+
+(source_file
+  (macro
+    (include_macro
+      (macro_path)))
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string))))))
+
+==================
+Invalid include macro with single quotes
+:error
+==================
+
+#include 'abc'
+
+------------------
+
+==================
+Invalid include macro with no quotes
+:error
+==================
+
+#include abc
+
+------------------
+
+==================
+Invalid include macro with escaped quotes
+==================
+
+#include "ab""c"
+
+------------------
+
+(source_file
+  (macro
+    (include_macro
+      (macro_path)))
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (string))))))
+
+==================
+Unknown macro
+:error
+==================
+
+#unknown
+
+------------------

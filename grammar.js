@@ -147,7 +147,11 @@ module.exports = grammar({
 		comment: ($) =>
 			token(choice(/\/\/[^\n]*/, /\/\*[^*]*(\*([^*/][^*]*)?)*(\*\/)?/)),
 
-		macro: ($) => seq(alias($._macro_hash, "#"), choice($.define_macro)),
+		macro: ($) =>
+			seq(
+				alias($._macro_hash, "#"),
+				choice($.define_macro, $.undef_macro, $.include_macro),
+			),
 
 		define_macro: ($) =>
 			seq(
@@ -166,6 +170,12 @@ module.exports = grammar({
 			),
 
 		macro_definition: ($) => /(\\(\r?\n)?|[^\\\n])*/,
+
+		undef_macro: ($) => seq("undef", $._macro_whitespace, $.variable),
+
+		include_macro: ($) => seq("include", $._macro_whitespace, $.macro_path),
+
+		macro_path: ($) => /"[^"]*"|<[^>]*>/,
 
 		alphanumeric_nular_command: ($) =>
 			token(

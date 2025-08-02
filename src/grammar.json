@@ -572,6 +572,14 @@
             {
               "type": "SYMBOL",
               "name": "define_macro"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "undef_macro"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "include_macro"
             }
           ]
         }
@@ -657,6 +665,44 @@
     "macro_definition": {
       "type": "PATTERN",
       "value": "(\\\\(\\r?\\n)?|[^\\\\\\n])*"
+    },
+    "undef_macro": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "undef"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_macro_whitespace"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "variable"
+        }
+      ]
+    },
+    "include_macro": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "include"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_macro_whitespace"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "macro_path"
+        }
+      ]
+    },
+    "macro_path": {
+      "type": "PATTERN",
+      "value": "\"[^\"]*\"|<[^>]*>"
     },
     "alphanumeric_nular_command": {
       "type": "TOKEN",
