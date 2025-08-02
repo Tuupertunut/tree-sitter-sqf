@@ -580,6 +580,22 @@
             {
               "type": "SYMBOL",
               "name": "include_macro"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "ifdef_macro"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "ifndef_macro"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "else_macro"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "endif_macro"
             }
           ]
         }
@@ -703,6 +719,48 @@
     "macro_path": {
       "type": "PATTERN",
       "value": "\"[^\"]*\"|<[^>]*>"
+    },
+    "ifdef_macro": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ifdef"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_macro_whitespace"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "variable"
+        }
+      ]
+    },
+    "ifndef_macro": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ifndef"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_macro_whitespace"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "variable"
+        }
+      ]
+    },
+    "else_macro": {
+      "type": "STRING",
+      "value": "else"
+    },
+    "endif_macro": {
+      "type": "STRING",
+      "value": "endif"
     },
     "alphanumeric_nular_command": {
       "type": "TOKEN",

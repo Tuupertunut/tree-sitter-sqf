@@ -879,6 +879,252 @@ Invalid include macro with escaped quotes
           (string))))))
 
 ==================
+Valid ifdef macro
+==================
+
+#ifdef abc
+def = 5;
+#endif
+def
+
+------------------
+
+(source_file
+  (macro
+    (ifdef_macro
+      (variable)))
+  (code
+    (statement
+      (assignment
+        (variable)
+        (expression
+          (nular_expression
+            (number)))))
+    (macro
+      (endif_macro))
+    (statement
+      (expression
+        (nular_expression
+          (variable))))))
+
+==================
+Valid empty ifdef macro
+==================
+
+#ifdef abc
+#endif
+
+------------------
+
+(source_file
+  (macro
+    (ifdef_macro
+      (variable)))
+  (macro
+    (endif_macro)))
+
+==================
+Valid ifdef else macro
+==================
+
+#ifdef abc
+def = 5;
+#else
+def = 2;
+#endif
+def
+
+------------------
+
+(source_file
+  (macro
+    (ifdef_macro
+      (variable)))
+  (code
+    (statement
+      (assignment
+        (variable)
+        (expression
+          (nular_expression
+            (number)))))
+    (macro
+      (else_macro))
+    (statement
+      (assignment
+        (variable)
+        (expression
+          (nular_expression
+            (number)))))
+    (macro
+      (endif_macro))
+    (statement
+      (expression
+        (nular_expression
+          (variable))))))
+
+==================
+Valid empty ifdef else macro
+==================
+
+#ifdef abc
+#else
+#endif
+
+------------------
+
+(source_file
+  (macro
+    (ifdef_macro
+      (variable)))
+  (macro
+    (else_macro))
+  (macro
+    (endif_macro)))
+
+==================
+Valid ifdef else macro inside statement
+==================
+
+def =
+#ifdef abc
+5
+#else
+2
+#endif
+;
+def
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (assignment
+        (variable)
+        (macro
+          (ifdef_macro
+            (variable)))
+        (expression
+          (nular_expression
+            (number)))
+        (macro
+          (else_macro))
+        (expression
+          (nular_expression
+            (number)))))
+    (macro
+      (endif_macro))
+    (statement
+      (expression
+        (nular_expression
+          (variable))))))
+
+==================
+Invalid ifdef macro without variable
+:error
+==================
+
+#ifdef
+#endif
+
+------------------
+
+==================
+Invalid ifdef macro with too many parts
+==================
+
+#ifdef abc def
+#endif
+
+------------------
+
+(source_file
+  (macro
+    (ifdef_macro
+      (variable)))
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (variable)))))
+  (macro
+    (endif_macro)))
+
+==================
+Valid ifndef macro
+==================
+
+#ifndef abc
+def = 5;
+#endif
+def
+
+------------------
+
+(source_file
+  (macro
+    (ifndef_macro
+      (variable)))
+  (code
+    (statement
+      (assignment
+        (variable)
+        (expression
+          (nular_expression
+            (number)))))
+    (macro
+      (endif_macro))
+    (statement
+      (expression
+        (nular_expression
+          (variable))))))
+
+==================
+Invalid endif macro with too many parts
+==================
+
+#ifdef abc
+#endif abc
+
+------------------
+
+(source_file
+  (macro
+    (ifdef_macro
+      (variable)))
+  (macro
+    (endif_macro))
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (variable))))))
+
+==================
+Invalid else macro with too many parts
+==================
+
+#ifdef abc
+#else abc
+#endif
+
+------------------
+
+(source_file
+  (macro
+    (ifdef_macro
+      (variable)))
+  (macro
+    (else_macro))
+  (code
+    (statement
+      (expression
+        (nular_expression
+          (variable)))))
+  (macro
+    (endif_macro)))
+
+==================
 Unknown macro
 :error
 ==================

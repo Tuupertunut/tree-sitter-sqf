@@ -195,6 +195,36 @@
     }
   },
   {
+    "type": "ifdef_macro",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ifndef_macro",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "include_macro",
     "named": true,
     "fields": {},
@@ -219,6 +249,22 @@
       "types": [
         {
           "type": "define_macro",
+          "named": true
+        },
+        {
+          "type": "else_macro",
+          "named": true
+        },
+        {
+          "type": "endif_macro",
+          "named": true
+        },
+        {
+          "type": "ifdef_macro",
+          "named": true
+        },
+        {
+          "type": "ifndef_macro",
           "named": true
         },
         {
@@ -441,6 +487,22 @@
   },
   {
     "type": "define",
+    "named": false
+  },
+  {
+    "type": "else_macro",
+    "named": true
+  },
+  {
+    "type": "endif_macro",
+    "named": true
+  },
+  {
+    "type": "ifdef",
+    "named": false
+  },
+  {
+    "type": "ifndef",
     "named": false
   },
   {

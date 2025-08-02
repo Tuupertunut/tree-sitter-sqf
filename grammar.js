@@ -150,7 +150,15 @@ module.exports = grammar({
 		macro: ($) =>
 			seq(
 				alias($._macro_hash, "#"),
-				choice($.define_macro, $.undef_macro, $.include_macro),
+				choice(
+					$.define_macro,
+					$.undef_macro,
+					$.include_macro,
+					$.ifdef_macro,
+					$.ifndef_macro,
+					$.else_macro,
+					$.endif_macro,
+				),
 			),
 
 		define_macro: ($) =>
@@ -176,6 +184,14 @@ module.exports = grammar({
 		include_macro: ($) => seq("include", $._macro_whitespace, $.macro_path),
 
 		macro_path: ($) => /"[^"]*"|<[^>]*>/,
+
+		ifdef_macro: ($) => seq("ifdef", $._macro_whitespace, $.variable),
+
+		ifndef_macro: ($) => seq("ifndef", $._macro_whitespace, $.variable),
+
+		else_macro: ($) => "else",
+
+		endif_macro: ($) => "endif",
 
 		alphanumeric_nular_command: ($) =>
 			token(
