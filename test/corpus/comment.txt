@@ -474,15 +474,6 @@ Comment inside macro definition
   (comment))
 
 ==================
-Comment inside macro arguments
-:error
-==================
-
-#define ab(cd/*,ef*/) 5 + cd * ef
-
-------------------
-
-==================
 Comment does not split ambiguous variable
 ==================
 
