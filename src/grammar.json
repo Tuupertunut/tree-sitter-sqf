@@ -90,8 +90,17 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "variable"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "variable"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "macro_call"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -122,6 +131,10 @@
         {
           "type": "SYMBOL",
           "name": "binary_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "macro_call"
         }
       ]
     },
@@ -531,6 +544,60 @@
         {
           "type": "SYMBOL",
           "name": "expression"
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "macro_call": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "variable"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_macro_call_parentheses"
+          },
+          "named": true,
+          "value": "macro_call_arguments"
+        }
+      ]
+    },
+    "_macro_call_parentheses": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "("
+          }
+        },
+        {
+          "type": "PATTERN",
+          "value": "([^()\"]|\"[^\"]*\")*"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_macro_call_parentheses"
+              },
+              {
+                "type": "PATTERN",
+                "value": "([^()\"]|\"[^\"]*\")*"
+              }
+            ]
+          }
         },
         {
           "type": "STRING",

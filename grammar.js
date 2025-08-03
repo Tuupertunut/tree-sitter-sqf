@@ -7,7 +7,6 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
-// TODO: preproc c
 // TODO: arg macro calls
 // HEMTT: 2. 2.e3 .2e3
 
@@ -36,12 +35,22 @@ module.exports = grammar({
 		statement: ($) => choice($.assignment, $.expression),
 
 		assignment: ($) =>
-			seq(optional($.assignment_modifier), $.variable, "=", $.expression),
+			seq(
+				optional($.assignment_modifier),
+				choice($.variable, $.macro_call),
+				"=",
+				$.expression,
+			),
 
 		assignment_modifier: ($) => /private/i,
 
 		expression: ($) =>
-			choice($.nular_expression, $.unary_expression, $.binary_expression),
+			choice(
+				$.nular_expression,
+				$.unary_expression,
+				$.binary_expression,
+				$.macro_call,
+			),
 
 		nular_expression: ($) =>
 			prec(
@@ -143,6 +152,21 @@ module.exports = grammar({
 		code_block: ($) => seq("{", choice(repeat(";"), $.code), "}"),
 
 		parentheses_expression: ($) => seq("(", $.expression, ")"),
+
+		macro_call: ($) =>
+			seq($.variable, alias($._macro_call_parentheses, $.macro_call_arguments)),
+
+		// To know where the argument list of a macro call ends, we must count all opening and
+		// closing parentheses inside the arguments. That's why this rule is recursive. There's also
+		// an exception: parentheses inside double quoted strings don't count, so we must also
+		// detect strings inside the arguments.
+		_macro_call_parentheses: ($) =>
+			seq(
+				token.immediate("("),
+				/([^()"]|"[^"]*")*/,
+				repeat(seq($._macro_call_parentheses, /([^()"]|"[^"]*")*/)),
+				")",
+			),
 
 		comment: ($) =>
 			token(choice(/\/\/[^\n]*/, /\/\*[^*]*(\*([^*/][^*]*)?)*(\*\/)?/)),

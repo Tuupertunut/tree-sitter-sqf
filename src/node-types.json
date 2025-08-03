@@ -36,6 +36,10 @@
           "named": true
         },
         {
+          "type": "macro_call",
+          "named": true
+        },
+        {
           "type": "variable",
           "named": true
         }
@@ -184,6 +188,10 @@
           "named": true
         },
         {
+          "type": "macro_call",
+          "named": true
+        },
+        {
           "type": "nular_expression",
           "named": true
         },
@@ -311,6 +319,30 @@
         }
       ]
     }
+  },
+  {
+    "type": "macro_call",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "macro_call_arguments",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "macro_call_arguments",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "nular_expression",
