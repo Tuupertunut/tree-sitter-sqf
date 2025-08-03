@@ -161,7 +161,7 @@
           "named": true
         },
         {
-          "type": "macro_definition",
+          "type": "macro_expression",
           "named": true
         },
         {
@@ -189,6 +189,21 @@
         },
         {
           "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "if_macro",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "macro_expression",
           "named": true
         }
       ]
@@ -257,6 +272,10 @@
         },
         {
           "type": "endif_macro",
+          "named": true
+        },
+        {
+          "type": "if_macro",
           "named": true
         },
         {
@@ -498,6 +517,10 @@
     "named": true
   },
   {
+    "type": "if",
+    "named": false
+  },
+  {
     "type": "ifdef",
     "named": false
   },
@@ -510,7 +533,7 @@
     "named": false
   },
   {
-    "type": "macro_definition",
+    "type": "macro_expression",
     "named": true
   },
   {

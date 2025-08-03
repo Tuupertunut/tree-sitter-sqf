@@ -290,3 +290,102 @@ private abc
           (expression
             (nular_expression
               (variable))))))))
+
+==================
+If statement
+==================
+
+if (abc > 6) then {
+    abc = 2;
+}
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (unary_expression
+              (alphanumeric_unary_command)
+              (expression
+                (nular_expression
+                  (parentheses_expression
+                    (expression
+                      (binary_expression
+                        (expression
+                          (nular_expression
+                            (variable)))
+                        (special_binary_command_3)
+                        (expression
+                          (nular_expression
+                            (number))))))))))
+          (alphanumeric_binary_command_4)
+          (expression
+            (nular_expression
+              (code_block
+                (code
+                  (statement
+                    (assignment
+                      (variable)
+                      (expression
+                        (nular_expression
+                          (number))))))))))))))
+
+==================
+If else statement
+==================
+
+if (abc > 6) then {
+    abc = 2;
+} else {
+    abc = 1;
+}
+
+------------------
+
+(source_file
+  (code
+    (statement
+      (expression
+        (binary_expression
+          (expression
+            (unary_expression
+              (alphanumeric_unary_command)
+              (expression
+                (nular_expression
+                  (parentheses_expression
+                    (expression
+                      (binary_expression
+                        (expression
+                          (nular_expression
+                            (variable)))
+                        (special_binary_command_3)
+                        (expression
+                          (nular_expression
+                            (number))))))))))
+          (alphanumeric_binary_command_4)
+          (expression
+            (binary_expression
+              (expression
+                (nular_expression
+                  (code_block
+                    (code
+                      (statement
+                        (assignment
+                          (variable)
+                          (expression
+                            (nular_expression
+                              (number)))))))))
+              (alphanumeric_binary_command_5)
+              (expression
+                (nular_expression
+                  (code_block
+                    (code
+                      (statement
+                        (assignment
+                          (variable)
+                          (expression
+                            (nular_expression
+                              (number))))))))))))))))

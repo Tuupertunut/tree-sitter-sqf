@@ -591,6 +591,10 @@
             },
             {
               "type": "SYMBOL",
+              "name": "if_macro"
+            },
+            {
+              "type": "SYMBOL",
               "name": "else_macro"
             },
             {
@@ -630,9 +634,102 @@
         },
         {
           "type": "SYMBOL",
-          "name": "macro_definition"
+          "name": "macro_expression"
         }
       ]
+    },
+    "undef_macro": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "undef"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_macro_whitespace"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "variable"
+        }
+      ]
+    },
+    "include_macro": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "include"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_macro_whitespace"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "macro_path"
+        }
+      ]
+    },
+    "ifdef_macro": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ifdef"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_macro_whitespace"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "variable"
+        }
+      ]
+    },
+    "ifndef_macro": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ifndef"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_macro_whitespace"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "variable"
+        }
+      ]
+    },
+    "if_macro": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "if"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_macro_whitespace"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "macro_expression"
+        }
+      ]
+    },
+    "else_macro": {
+      "type": "STRING",
+      "value": "else"
+    },
+    "endif_macro": {
+      "type": "STRING",
+      "value": "endif"
     },
     "macro_arguments": {
       "type": "SEQ",
@@ -678,89 +775,13 @@
         }
       ]
     },
-    "macro_definition": {
+    "macro_expression": {
       "type": "PATTERN",
       "value": "(\\\\(\\r?\\n)?|[^\\\\\\n])*"
-    },
-    "undef_macro": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "undef"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_macro_whitespace"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "variable"
-        }
-      ]
-    },
-    "include_macro": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "include"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_macro_whitespace"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "macro_path"
-        }
-      ]
     },
     "macro_path": {
       "type": "PATTERN",
       "value": "\"[^\"]*\"|<[^>]*>"
-    },
-    "ifdef_macro": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "ifdef"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_macro_whitespace"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "variable"
-        }
-      ]
-    },
-    "ifndef_macro": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "ifndef"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_macro_whitespace"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "variable"
-        }
-      ]
-    },
-    "else_macro": {
-      "type": "STRING",
-      "value": "else"
-    },
-    "endif_macro": {
-      "type": "STRING",
-      "value": "endif"
     },
     "alphanumeric_nular_command": {
       "type": "TOKEN",

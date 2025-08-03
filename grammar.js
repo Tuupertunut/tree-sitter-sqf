@@ -156,6 +156,7 @@ module.exports = grammar({
 					$.include_macro,
 					$.ifdef_macro,
 					$.ifndef_macro,
+					$.if_macro,
 					$.else_macro,
 					$.endif_macro,
 				),
@@ -167,8 +168,22 @@ module.exports = grammar({
 				$._macro_whitespace,
 				$.variable,
 				optional($.macro_arguments),
-				$.macro_definition,
+				$.macro_expression,
 			),
+
+		undef_macro: ($) => seq("undef", $._macro_whitespace, $.variable),
+
+		include_macro: ($) => seq("include", $._macro_whitespace, $.macro_path),
+
+		ifdef_macro: ($) => seq("ifdef", $._macro_whitespace, $.variable),
+
+		ifndef_macro: ($) => seq("ifndef", $._macro_whitespace, $.variable),
+
+		if_macro: ($) => seq("if", $._macro_whitespace, $.macro_expression),
+
+		else_macro: ($) => "else",
+
+		endif_macro: ($) => "endif",
 
 		macro_arguments: ($) =>
 			seq(
@@ -177,21 +192,9 @@ module.exports = grammar({
 				")",
 			),
 
-		macro_definition: ($) => /(\\(\r?\n)?|[^\\\n])*/,
-
-		undef_macro: ($) => seq("undef", $._macro_whitespace, $.variable),
-
-		include_macro: ($) => seq("include", $._macro_whitespace, $.macro_path),
+		macro_expression: ($) => /(\\(\r?\n)?|[^\\\n])*/,
 
 		macro_path: ($) => /"[^"]*"|<[^>]*>/,
-
-		ifdef_macro: ($) => seq("ifdef", $._macro_whitespace, $.variable),
-
-		ifndef_macro: ($) => seq("ifndef", $._macro_whitespace, $.variable),
-
-		else_macro: ($) => "else",
-
-		endif_macro: ($) => "endif",
 
 		alphanumeric_nular_command: ($) =>
 			token(

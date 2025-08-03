@@ -10,7 +10,7 @@ Valid define macro
   (macro
     (define_macro
       (variable)
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Valid define macro and command
@@ -25,7 +25,7 @@ sin abc
   (macro
     (define_macro
       (variable)
-      (macro_definition)))
+      (macro_expression)))
   (code
     (statement
       (expression
@@ -48,7 +48,7 @@ player
   (macro
     (define_macro
       (variable)
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Valid multiline define macro
@@ -63,7 +63,7 @@ player
   (macro
     (define_macro
       (variable)
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Valid multiline define macro and command
@@ -79,7 +79,7 @@ not abc
   (macro
     (define_macro
       (variable)
-      (macro_definition)))
+      (macro_expression)))
   (code
     (statement
       (expression
@@ -102,7 +102,7 @@ sin abc
   (macro
     (define_macro
       (variable)
-      (macro_definition)))
+      (macro_expression)))
   (code
     (statement
       (expression
@@ -133,7 +133,7 @@ sin 30
   (macro
     (define_macro
       (variable)
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Valid define macro after command and empty lines
@@ -158,7 +158,7 @@ sin 30
   (macro
     (define_macro
       (variable)
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Valid define macro between commands
@@ -182,7 +182,7 @@ cos abc
     (macro
       (define_macro
         (variable)
-        (macro_definition)))
+        (macro_expression)))
     (statement
       (expression
         (unary_expression
@@ -213,7 +213,7 @@ cos abc
     (macro
       (define_macro
         (variable)
-        (macro_definition)))
+        (macro_expression)))
     (statement
       (expression
         (unary_expression
@@ -244,7 +244,7 @@ Valid define macro inside array
             (macro
               (define_macro
                 (variable)
-                (macro_definition)))
+                (macro_expression)))
             (expression
               (nular_expression
                 (number)))))))))
@@ -270,7 +270,7 @@ Valid define macro with empty definition
   (macro
     (define_macro
       (variable)
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Valid define macro with multiple spaces
@@ -284,7 +284,7 @@ Valid define macro with multiple spaces
   (macro
     (define_macro
       (variable)
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Invalid define macro with no space
@@ -359,7 +359,7 @@ abc 2
   (macro
     (define_macro
       (variable)
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Valid define macro with escaped newline and space
@@ -374,7 +374,7 @@ Valid define macro with escaped newline and space
   (macro
     (define_macro
       (variable)
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Invalid multiline define macro
@@ -389,7 +389,7 @@ Invalid multiline define macro
   (macro
     (define_macro
       (variable)
-      (macro_definition)))
+      (macro_expression)))
   (code
     (statement
       (expression
@@ -481,7 +481,7 @@ Valid 0 argument define macro
     (define_macro
       (variable)
       (macro_arguments)
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Valid 1 argument define macro
@@ -497,7 +497,7 @@ Valid 1 argument define macro
       (variable)
       (macro_arguments
         (variable))
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Valid 1 argument define macro with trailing comma
@@ -513,7 +513,7 @@ Valid 1 argument define macro with trailing comma
       (variable)
       (macro_arguments
         (variable))
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Valid 1 argument define macro with spaces and trailing comma
@@ -529,7 +529,7 @@ Valid 1 argument define macro with spaces and trailing comma
       (variable)
       (macro_arguments
         (variable))
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Invalid 1 argument define macro with leading comma
@@ -564,7 +564,7 @@ Valid 2 argument define macro
       (macro_arguments
         (variable)
         (variable))
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Valid 2 argument define macro with no commas
@@ -581,7 +581,7 @@ Valid 2 argument define macro with no commas
       (macro_arguments
         (variable)
         (variable))
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Valid 2 argument define macro with spaces and trailing comma
@@ -598,7 +598,7 @@ Valid 2 argument define macro with spaces and trailing comma
       (macro_arguments
         (variable)
         (variable))
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Invalid 2 argument define macro with 2 commas between
@@ -625,7 +625,7 @@ Valid 3 argument define macro with mixed spaces and commas
         (variable)
         (variable)
         (variable))
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Valid 2 argument define macro with commas, spaces and escaped newlines
@@ -645,7 +645,7 @@ cd\
       (macro_arguments
         (variable)
         (variable))
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Invalid 2 argument define macro with commas, spaces and escaped newlines
@@ -681,7 +681,7 @@ Invalid 1 argument define macro with space before arguments
   (macro
     (define_macro
       (variable)
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Valid 1 argument define macro without space after arguments
@@ -697,7 +697,7 @@ Valid 1 argument define macro without space after arguments
       (variable)
       (macro_arguments
         (variable))
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Invalid 2 argument define macro with invalid characters
@@ -765,7 +765,7 @@ Macro and command ambiguity
   (macro
     (define_macro
       (variable)
-      (macro_definition))))
+      (macro_expression))))
 
 ==================
 Valid undef macro
@@ -1123,6 +1123,90 @@ Invalid else macro with too many parts
           (variable)))))
   (macro
     (endif_macro)))
+
+==================
+Valid if macro
+==================
+
+#if 7 == 7
+def = 5;
+#endif
+def
+
+------------------
+
+(source_file
+  (macro
+    (if_macro
+      (macro_expression)))
+  (code
+    (statement
+      (assignment
+        (variable)
+        (expression
+          (nular_expression
+            (number)))))
+    (macro
+      (endif_macro))
+    (statement
+      (expression
+        (nular_expression
+          (variable))))))
+
+==================
+Valid multiline if macro
+==================
+
+#if 7 \
+== 7
+def = 5;
+#endif
+def
+
+------------------
+
+(source_file
+  (macro
+    (if_macro
+      (macro_expression)))
+  (code
+    (statement
+      (assignment
+        (variable)
+        (expression
+          (nular_expression
+            (number)))))
+    (macro
+      (endif_macro))
+    (statement
+      (expression
+        (nular_expression
+          (variable))))))
+
+==================
+Invalid multiline if macro
+:error
+==================
+
+#if 7 
+== 7
+def = 5;
+#endif
+def
+
+------------------
+
+==================
+Invalid if macro with no space
+:error
+==================
+
+#if9 < 7
+def = 5;
+#endif
+def
+
+------------------
 
 ==================
 Unknown macro

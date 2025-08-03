@@ -470,7 +470,7 @@ Comment inside macro definition
       (macro_arguments
         (variable)
         (variable))
-      (macro_definition)))
+      (macro_expression)))
   (comment))
 
 ==================
