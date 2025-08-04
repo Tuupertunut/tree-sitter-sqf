@@ -340,9 +340,24 @@
     }
   },
   {
-    "type": "macro_call_arguments",
+    "type": "macro_call_argument",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "macro_call_arguments",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "macro_call_argument",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "nular_expression",

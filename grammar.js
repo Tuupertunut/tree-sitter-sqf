@@ -7,7 +7,6 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
-// TODO: arg macro calls
 // HEMTT: 2. 2.e3 .2e3
 
 module.exports = grammar({
@@ -153,16 +152,38 @@ module.exports = grammar({
 
 		parentheses_expression: ($) => seq("(", $.expression, ")"),
 
-		macro_call: ($) =>
-			seq($.variable, alias($._macro_call_parentheses, $.macro_call_arguments)),
+		macro_call: ($) => seq($.variable, $.macro_call_arguments),
 
-		// To know where the argument list of a macro call ends, we must count all opening and
-		// closing parentheses inside the arguments. That's why this rule is recursive. There's also
-		// an exception: parentheses inside double quoted strings don't count, so we must also
-		// detect strings inside the arguments.
-		_macro_call_parentheses: ($) =>
+		macro_call_arguments: ($) =>
 			seq(
 				token.immediate("("),
+				optional(
+					seq($.macro_call_argument, repeat(seq(",", $.macro_call_argument))),
+				),
+				")",
+			),
+
+		// Generally an argument of a macro call ends when either a comma or the closing parenthesis
+		// of the argument list is encountered. However it's not easy to detect either because they
+		// have these special rules:
+		// 1. There may be any number of matching parentheses inside the arguments.
+		// 2. Commas inside parentheses and double quoted strings don't count.
+		// 3. Parentheses inside double quoted strings don't count.
+		// So we have to do a little parsing for the argument even though we are not really
+		// interested in what it contains. In the regex patterns we detect all double quoted
+		// strings and ignore everything in them. Then we have this recursive rule for counting all
+		// opening and closing parentheses inside the argument and ensuring they match. Note also
+		// that the regex pattern for what's inside parentheses allows a comma but the one for the
+		// argument itself does not.
+		macro_call_argument: ($) =>
+			seq(
+				/([^(),"]|"[^"]*")*/,
+				repeat(seq($._macro_call_parentheses, /([^(),"]|"[^"]*")*/)),
+			),
+
+		_macro_call_parentheses: ($) =>
+			seq(
+				"(",
 				/([^()"]|"[^"]*")*/,
 				repeat(seq($._macro_call_parentheses, /([^()"]|"[^"]*")*/)),
 				")",

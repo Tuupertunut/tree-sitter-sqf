@@ -559,17 +559,12 @@
           "name": "variable"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_macro_call_parentheses"
-          },
-          "named": true,
-          "value": "macro_call_arguments"
+          "type": "SYMBOL",
+          "name": "macro_call_arguments"
         }
       ]
     },
-    "_macro_call_parentheses": {
+    "macro_call_arguments": {
       "type": "SEQ",
       "members": [
         {
@@ -578,6 +573,77 @@
             "type": "STRING",
             "value": "("
           }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "macro_call_argument"
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": ","
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "macro_call_argument"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "macro_call_argument": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "([^(),\"]|\"[^\"]*\")*"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_macro_call_parentheses"
+              },
+              {
+                "type": "PATTERN",
+                "value": "([^(),\"]|\"[^\"]*\")*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "_macro_call_parentheses": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
         },
         {
           "type": "PATTERN",
