@@ -557,7 +557,22 @@ module.exports = grammar({
 				// private is both a unary command and an assignment modifier. Handling it as a
 				// separate token so we can declare a conflict between the two uses.
 				/private/i,
-				token(
+
+				// Hack: this list should be wrapped in a token, but there is a bug in tree-sitter
+				// that breaks keyword extraction if we do so. The following tests were failing:
+				// - Macro call does not split
+				// - Invalid alphanumeric unary command with no space
+				// - Invalid alphanumeric unary command with no space
+				// All these commands are now temporarily their own tokens and performance is worse
+				// than it should. If the tree-sitter bug gets fixed, wrap this list in a token like
+				// token(
+				//     choice(
+				//         /command1/i,
+				//         /command2/i,
+				//         ...
+				//     )
+				// )
+				/*token(*/
 					choice(
 						/abs/i,
 						/acos/i,
@@ -1872,7 +1887,7 @@ module.exports = grammar({
 						/with/i,
 						/worldtoscreen/i,
 					),
-				),
+				/*),*/
 			),
 
 		special_binary_command_9: ($) => token("#"),
